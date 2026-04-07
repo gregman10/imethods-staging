@@ -1093,8 +1093,8 @@ nav.site-nav.scrolled {
   font-weight: 400;
 }
 
-.quote-pre  { margin-bottom: 22px; }
-.quote-post { margin-top: 22px; margin-bottom: 40px; }
+.quote-pre  { margin-bottom: 10px; }
+.quote-post { margin-top: 10px; margin-bottom: 32px; }
 
 .quote-big {
   font-family: 'Fraunces', Georgia, serif;
@@ -1254,7 +1254,10 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   margin-top: 56px;
 }
-.section-cta .btn { min-width: 240px; text-align: center; }
+.section-cta .btn { justify-content: center; }
+
+.diff-cta { margin-top: 36px; display: flex; justify-content: flex-start; }
+.diff-cta .btn { justify-content: center; }
 
 .cta-strip {
   background: linear-gradient(180deg, #faf6f1 0%, #fff8f0 100%);
@@ -2671,6 +2674,10 @@ body { position: relative; }
           <span>That's the iMethods difference.</span>
         </div>
       </div>
+
+      <div class="diff-cta">
+        <a href="#" class="btn btn--primary">Let's Talk</a>
+      </div>
     </div>
   </div>
   <div class="diff-right">
@@ -2760,10 +2767,6 @@ body { position: relative; }
           <p>When something breaks, we're already on it — and you're already in the loop.</p>
         </div>
       </div>
-    </div>
-
-    <div class="section-cta fade-in">
-      <a href="#" class="btn btn--primary">Let's Talk</a>
     </div>
 
   </div>
