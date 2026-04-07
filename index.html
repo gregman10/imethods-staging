@@ -1049,55 +1049,61 @@ nav.site-nav.scrolled {
   pointer-events: all;
 }
 
+.testimonial-slide {
+  overflow: visible !important;
+}
+
 .testimonial-quote-panel {
   position: relative;
-  padding: 96px 80px 80px;
-  max-width: 960px;
-  margin: 0 auto;
-  overflow: hidden;
+  padding: 88px 88px 80px;
+  overflow: visible;
+  background: var(--orange);
+  border-radius: 20px;
 }
 
 .testimonial-quote-panel::before {
   content: '\201C';
   position: absolute;
   top: -110px;
-  left: 20px;
+  left: 24px;
   font-family: 'Fraunces', Georgia, serif;
-  font-size: 460px;
+  font-size: 420px;
   font-weight: 700;
   line-height: 1;
   color: rgba(255,255,255,0.10);
   pointer-events: none;
   user-select: none;
+  z-index: 0;
+}
+
+.testimonial-text-col {
+  position: relative;
+  z-index: 1;
+  max-width: 58%;
 }
 
 .quote-pre,
 .quote-post {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.72;
   color: rgba(255,255,255,0.92);
   margin: 0;
   font-weight: 400;
-  position: relative;
-  z-index: 1;
-  max-width: 70ch;
 }
 
-.quote-pre  { margin-bottom: 28px; }
-.quote-post { margin-top: 28px; margin-bottom: 44px; }
+.quote-pre  { margin-bottom: 22px; }
+.quote-post { margin-top: 22px; margin-bottom: 40px; }
 
 .quote-big {
   font-family: 'Fraunces', Georgia, serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(52px, 6.4vw, 104px);
-  line-height: 0.98;
+  font-size: clamp(34px, 3.8vw, 54px);
+  line-height: 1.04;
   color: var(--white);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.018em;
   margin: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .testimonial-source {
@@ -1110,8 +1116,6 @@ nav.site-nav.scrolled {
   display: flex;
   align-items: center;
   gap: 14px;
-  position: relative;
-  z-index: 1;
 }
 
 .testimonial-source::before {
@@ -1121,13 +1125,54 @@ nav.site-nav.scrolled {
   background: rgba(255,255,255,0.55);
 }
 
-@media (max-width: 880px) {
-  .testimonial-quote-panel {
-    padding: 64px 32px 56px;
+.testimonial-photo {
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  width: 38%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  transform: translateY(-50%) rotate(-3deg);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.28), 0 8px 20px rgba(0,0,0,0.18);
+  border: 8px solid #fff;
+  z-index: 2;
+  background: #fff;
+}
+
+.testimonial-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Slight rotation variety per slide */
+.testimonial-slide:nth-child(2) .testimonial-photo { transform: translateY(-50%) rotate(2.5deg); }
+.testimonial-slide:nth-child(3) .testimonial-photo { transform: translateY(-50%) rotate(-2deg); }
+.testimonial-slide:nth-child(4) .testimonial-photo { transform: translateY(-50%) rotate(3deg); }
+.testimonial-slide:nth-child(5) .testimonial-photo { transform: translateY(-50%) rotate(-2.5deg); }
+
+@media (max-width: 980px) {
+  .testimonial-photo { right: -30px; width: 34%; }
+  .testimonial-text-col { max-width: 62%; }
+}
+
+@media (max-width: 760px) {
+  .testimonial-quote-panel { padding: 56px 32px 48px; }
+  .testimonial-quote-panel::before { font-size: 260px; top: -50px; }
+  .testimonial-text-col { max-width: 100%; }
+  .quote-big { font-size: clamp(30px, 7.5vw, 44px); }
+  .quote-pre, .quote-post { font-size: 15px; }
+  .testimonial-photo {
+    position: relative;
+    right: auto; top: auto;
+    width: 80%;
+    max-width: 320px;
+    margin: 36px auto 0;
+    transform: rotate(-2deg) !important;
   }
-  .testimonial-quote-panel::before { font-size: 280px; top: -55px; }
-  .quote-big { font-size: clamp(38px, 9.5vw, 60px); }
-  .quote-pre, .quote-post { font-size: 16px; }
 }
 
 /* ============================================
@@ -2402,45 +2447,80 @@ body { position: relative; }
 
         <div class="testimonial-slide active">
           <div class="testimonial-quote-panel">
-            <p class="quote-pre">It was clear that the resource we hired was a strategic fit for the team. They understood where we were as an organization. They had just rolled off of a similar project, so they were able to</p>
-            <h3 class="quote-big">talk the talk,<br>walk the walk,</h3>
-            <p class="quote-post">and provide insight to us. They helped us understand what the project would entail from a work perspective. It was pretty evident from the get-go that we had the right fit.</p>
-            <p class="testimonial-source">Director &nbsp;·&nbsp; October 2025</p>
+            <div class="testimonial-text-col">
+              <p class="quote-pre">It was clear that the resource we hired was a strategic fit for the team. They understood where we were as an organization. They had just rolled off of a similar project, so they were able to</p>
+              <h3 class="quote-big">talk the talk,<br>walk the walk,</h3>
+              <p class="quote-post">and provide insight to us. They helped us understand what the project would entail from a work perspective. It was pretty evident from the get-go that we had the right fit.</p>
+              <p class="testimonial-source">Director &nbsp;·&nbsp; October 2025</p>
+            </div>
+            <div class="testimonial-photo">
+              <img src="https://imethods.com/wp-content/uploads/2019/12/22-iMethods-03-Lifestyle-Rd3-33.jpg"
+                   alt="iMethods team meeting"
+                   onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80'">
+            </div>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <p class="quote-pre">We have</p>
-            <h3 class="quote-big">a very transparent<br>relationship.</h3>
-            <p class="quote-post">We meet very regularly. The firm will often do check-ins with us to see how things are going not just at the project level but also at a more strategic level in terms of how they can be supportive of the organization as a whole. We have had opportunities to engage other leaders to talk about challenging HIT recruitment. The firm has been tremendous in facilitating those conversations. They are very helpful.</p>
-            <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+            <div class="testimonial-text-col">
+              <p class="quote-pre">We have</p>
+              <h3 class="quote-big">a very transparent<br>relationship.</h3>
+              <p class="quote-post">We meet very regularly. The firm will often do check-ins with us to see how things are going not just at the project level but also at a more strategic level in terms of how they can be supportive of the organization as a whole. We have had opportunities to engage other leaders to talk about challenging HIT recruitment. The firm has been tremendous in facilitating those conversations. They are very helpful.</p>
+              <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+            </div>
+            <div class="testimonial-photo">
+              <img src="https://imethods.com/wp-content/uploads/2022/08/22-iMethods-03-Lifestyle-Rd3-16-scaled.jpg"
+                   alt="iMethods team collaboration"
+                   onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80'">
+            </div>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <p class="quote-pre">The firm is a tremendous resource. They understand the landscape and the uniqueness that comes with servicing clients. They are</p>
-            <h3 class="quote-big">phenomenal on<br>every level.</h3>
-            <p class="quote-post">We are very impressed with the company.</p>
-            <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+            <div class="testimonial-text-col">
+              <p class="quote-pre">The firm is a tremendous resource. They understand the landscape and the uniqueness that comes with servicing clients. They are</p>
+              <h3 class="quote-big">phenomenal on<br>every level.</h3>
+              <p class="quote-post">We are very impressed with the company.</p>
+              <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+            </div>
+            <div class="testimonial-photo">
+              <img src="https://imethods.com/wp-content/uploads/2019/12/22-iMethods-03-Lifestyle-Rd3-3-scaled.jpg"
+                   alt="iMethods consultant at work"
+                   onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80'">
+            </div>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <p class="quote-pre">We have had a long partnership with iMethods.</p>
-            <h3 class="quote-big">They really lean into<br>the partnership</h3>
-            <p class="quote-post">and take feedback really well. We have had some tough areas with other firms, but iMethods has held their ground for us. They have provided excellent service at a much lower price point than other firms. iMethods has provided a lot of resources, and we are surprised at how good their consultant resources have been.</p>
-            <p class="testimonial-source">CIO &nbsp;·&nbsp; September 2025</p>
+            <div class="testimonial-text-col">
+              <p class="quote-pre">We have had a long partnership with iMethods.</p>
+              <h3 class="quote-big">They really lean into<br>the partnership</h3>
+              <p class="quote-post">and take feedback really well. We have had some tough areas with other firms, but iMethods has held their ground for us. They have provided excellent service at a much lower price point than other firms. iMethods has provided a lot of resources, and we are surprised at how good their consultant resources have been.</p>
+              <p class="testimonial-source">CIO &nbsp;·&nbsp; September 2025</p>
+            </div>
+            <div class="testimonial-photo">
+              <img src="https://imethods.com/wp-content/uploads/2020/11/22-iMethods-03-Lifestyle-Rd3-6.jpg"
+                   alt="iMethods professionals"
+                   onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80'">
+            </div>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <p class="quote-pre">iMethods was responsive. They were very eager and happy to participate. They helped a lot. They were very adaptable.</p>
-            <h3 class="quote-big">I wouldn't do the service<br>without them.</h3>
-            <p class="testimonial-source">CMIO &nbsp;·&nbsp; July 2025</p>
+            <div class="testimonial-text-col">
+              <p class="quote-pre">iMethods was responsive. They were very eager and happy to participate. They helped a lot. They were very adaptable.</p>
+              <h3 class="quote-big">I wouldn't do the service<br>without them.</h3>
+              <p class="testimonial-source">CMIO &nbsp;·&nbsp; July 2025</p>
+            </div>
+            <div class="testimonial-photo">
+              <img src="https://imethods.com/wp-content/uploads/2020/11/VP-Exec-ii-scaled.jpg"
+                   alt="iMethods executive partner"
+                   onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=80'">
+            </div>
           </div>
         </div>
 
