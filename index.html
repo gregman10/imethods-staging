@@ -1031,18 +1031,16 @@ nav.site-nav.scrolled {
 
 .testimonial-slide {
   min-width: 100%;
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  display: block;
+  border-radius: 20px;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
+  background: var(--orange);
 }
 
 .testimonial-slide.active {
@@ -1052,37 +1050,84 @@ nav.site-nav.scrolled {
 }
 
 .testimonial-quote-panel {
-  background: var(--orange);
-  padding: 56px 52px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: relative;
+  padding: 96px 80px 80px;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.big-quote {
-  font-family: var(--font-display);
-  font-size: 64px;
+.testimonial-quote-panel::before {
+  content: '\201C';
+  position: absolute;
+  top: -110px;
+  left: 20px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 460px;
   font-weight: 700;
-  color: rgba(255,255,255,0.2);
-  line-height: 0.7;
-  margin-bottom: 20px;
+  line-height: 1;
+  color: rgba(255,255,255,0.10);
+  pointer-events: none;
+  user-select: none;
 }
 
-.testimonial-text {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 3.5vw, 44px);
+.quote-pre,
+.quote-post {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.92);
+  margin: 0;
   font-weight: 400;
+  position: relative;
+  z-index: 1;
+  max-width: 70ch;
+}
+
+.quote-pre  { margin-bottom: 28px; }
+.quote-post { margin-top: 28px; margin-bottom: 44px; }
+
+.quote-big {
+  font-family: 'Fraunces', Georgia, serif;
   font-style: italic;
-  line-height: 1.3;
+  font-weight: 300;
+  font-size: clamp(52px, 6.4vw, 104px);
+  line-height: 0.98;
   color: var(--white);
-  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-source {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.04em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-source::before {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: rgba(255,255,255,0.55);
+}
+
+@media (max-width: 880px) {
+  .testimonial-quote-panel {
+    padding: 64px 32px 56px;
+  }
+  .testimonial-quote-panel::before { font-size: 280px; top: -55px; }
+  .quote-big { font-size: clamp(38px, 9.5vw, 60px); }
+  .quote-pre, .quote-post { font-size: 16px; }
 }
 
 /* ============================================
@@ -1160,6 +1205,45 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--orange);
   width: 24px;
   border-radius: 4px;
+}
+
+/* ============================================
+   INLINE CTA STRIPS — appear every 3rd section
+   ============================================ */
+.cta-strip {
+  background: linear-gradient(180deg, #faf6f1 0%, #fff8f0 100%);
+  border-top: 1px solid rgba(232,103,26,0.15);
+  border-bottom: 1px solid rgba(232,103,26,0.15);
+  padding: 44px 0;
+  position: relative;
+}
+.cta-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.cta-strip-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.25;
+  flex: 1 1 auto;
+  max-width: 720px;
+  letter-spacing: -0.01em;
+}
+.cta-strip-text strong {
+  font-weight: 700;
+  font-style: normal;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  color: var(--orange);
+}
+.cta-strip .btn { white-space: nowrap; }
+@media (max-width: 720px) {
+  .cta-strip-inner { flex-direction: column; align-items: flex-start; }
 }
 
 /* ============================================
@@ -1890,8 +1974,7 @@ body { position: relative; }
   .contrast-grid { grid-template-columns: 1fr; }
   .pain-cards { grid-template-columns: 1fr; }
   .nav-links { display: none; }
-  .testimonial-slide { grid-template-columns: 1fr; }
-  .testimonial-photo-panel { min-height: 220px; }
+  .testimonial-slide { display: block; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-badges { justify-content: flex-start; }
 }
@@ -2169,6 +2252,15 @@ body { position: relative; }
 </section>
 
 
+<!-- CTA Strip 1 -->
+<div class="cta-strip">
+  <div class="wrap cta-strip-inner">
+    <div class="cta-strip-text">A short conversation is the fastest way to know if a <strong>Performance Partnership</strong> fits.</div>
+    <a href="#" class="btn btn--primary">Let's Talk</a>
+  </div>
+</div>
+
+
 <!-- ============================================
      THE MATURITY GAP
      ============================================ -->
@@ -2310,61 +2402,45 @@ body { position: relative; }
 
         <div class="testimonial-slide active">
           <div class="testimonial-quote-panel">
-            <div class="big-quote">"</div>
-            <p class="testimonial-text">They operate as a true partner, not a hands-off vendor.</p>
-            <p class="testimonial-source">— Director, Enterprise Health System</p>
-          </div>
-          <div class="testimonial-photo-panel">
-            <div class="parallax-frame" data-speed="0.14">
-              <img src="https://imethods.com/wp-content/uploads/2019/12/22-iMethods-03-Lifestyle-Rd3-33.jpg"
-                   alt="iMethods team meeting"
-                   onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80'">
-            </div>
+            <p class="quote-pre">It was clear that the resource we hired was a strategic fit for the team. They understood where we were as an organization. They had just rolled off of a similar project, so they were able to</p>
+            <h3 class="quote-big">talk the talk,<br>walk the walk,</h3>
+            <p class="quote-post">and provide insight to us. They helped us understand what the project would entail from a work perspective. It was pretty evident from the get-go that we had the right fit.</p>
+            <p class="testimonial-source">Director &nbsp;·&nbsp; October 2025</p>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <div class="big-quote">"</div>
-            <p class="testimonial-text">iMethods is simply instrumental to our success. I can't say that enough.</p>
-            <p class="testimonial-source">— Director, June 2022</p>
-          </div>
-          <div class="testimonial-photo-panel">
-            <div class="parallax-frame" data-speed="0.14">
-              <img src="https://imethods.com/wp-content/uploads/2022/08/22-iMethods-03-Lifestyle-Rd3-16-scaled.jpg"
-                   alt="iMethods team"
-                   onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80'">
-            </div>
+            <p class="quote-pre">We have</p>
+            <h3 class="quote-big">a very transparent<br>relationship.</h3>
+            <p class="quote-post">We meet very regularly. The firm will often do check-ins with us to see how things are going not just at the project level but also at a more strategic level in terms of how they can be supportive of the organization as a whole. We have had opportunities to engage other leaders to talk about challenging HIT recruitment. The firm has been tremendous in facilitating those conversations. They are very helpful.</p>
+            <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <div class="big-quote">"</div>
-            <p class="testimonial-text">The firm listens, cares, and understands what we are trying to solve.</p>
-            <p class="testimonial-source">— VP/Executive, July 2022</p>
-          </div>
-          <div class="testimonial-photo-panel">
-            <div class="parallax-frame" data-speed="0.14">
-              <img src="https://imethods.com/wp-content/uploads/2020/11/22-iMethods-03-Lifestyle-Rd3-6.jpg"
-                   alt="iMethods professionals"
-                   onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80'">
-            </div>
+            <p class="quote-pre">The firm is a tremendous resource. They understand the landscape and the uniqueness that comes with servicing clients. They are</p>
+            <h3 class="quote-big">phenomenal on<br>every level.</h3>
+            <p class="quote-post">We are very impressed with the company.</p>
+            <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
           </div>
         </div>
 
         <div class="testimonial-slide">
           <div class="testimonial-quote-panel">
-            <div class="big-quote">"</div>
-            <p class="testimonial-text">Time and time again, iMethods has stepped forward and delivered.</p>
-            <p class="testimonial-source">— Director, March 2024</p>
+            <p class="quote-pre">We have had a long partnership with iMethods.</p>
+            <h3 class="quote-big">They really lean into<br>the partnership</h3>
+            <p class="quote-post">and take feedback really well. We have had some tough areas with other firms, but iMethods has held their ground for us. They have provided excellent service at a much lower price point than other firms. iMethods has provided a lot of resources, and we are surprised at how good their consultant resources have been.</p>
+            <p class="testimonial-source">CIO &nbsp;·&nbsp; September 2025</p>
           </div>
-          <div class="testimonial-photo-panel">
-            <div class="parallax-frame" data-speed="0.14">
-              <img src="https://imethods.com/wp-content/uploads/2020/11/VP-Exec-ii-scaled.jpg"
-                   alt="iMethods executive"
-                   onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80'">
-            </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-quote-panel">
+            <p class="quote-pre">iMethods was responsive. They were very eager and happy to participate. They helped a lot. They were very adaptable.</p>
+            <h3 class="quote-big">I wouldn't do the service<br>without them.</h3>
+            <p class="testimonial-source">CMIO &nbsp;·&nbsp; July 2025</p>
           </div>
         </div>
 
@@ -2379,6 +2455,7 @@ body { position: relative; }
           <div class="dot" data-index="1"></div>
           <div class="dot" data-index="2"></div>
           <div class="dot" data-index="3"></div>
+          <div class="dot" data-index="4"></div>
         </div>
         <button class="slider-btn" id="slideNext" aria-label="Next">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2387,6 +2464,15 @@ body { position: relative; }
     </div>
   </div>
 </section>
+
+
+<!-- CTA Strip 2 -->
+<div class="cta-strip">
+  <div class="wrap cta-strip-inner">
+    <div class="cta-strip-text">Hear how this sounds when it's <strong>your team</strong> talking about <strong>your partner</strong>.</div>
+    <a href="#" class="btn btn--primary">Let's Talk</a>
+  </div>
+</div>
 
 
 <!-- ============================================
@@ -2524,6 +2610,15 @@ body { position: relative; }
 </section>
 
 
+<!-- CTA Strip 3 -->
+<div class="cta-strip">
+  <div class="wrap cta-strip-inner">
+    <div class="cta-strip-text">Ready to see what a <strong>Performance Partnership</strong> looks like inside your environment?</div>
+    <a href="#" class="btn btn--primary">Let's Talk</a>
+  </div>
+</div>
+
+
 <!-- ============================================
      THE OUTCOME
      ============================================ -->
@@ -2623,7 +2718,7 @@ body { position: relative; }
       <p style="font-size:17px; color:rgba(255,255,255,0.85); margin-bottom:32px; line-height:1.6;">
         A focused conversation to assess your current operating model, performance pressures, and whether a Performance Partnership fits your environment.
       </p>
-      <a href="#" class="btn" style="background:white; color:var(--orange); border-color:white; font-size:16px; padding:16px 36px;">Book a Performance Discussion</a>
+      <a href="#" class="btn" style="background:white; color:var(--orange); border-color:white; font-size:16px; padding:16px 36px;">Let's Talk</a>
     </div>
   </div>
 </div>
