@@ -1026,14 +1026,14 @@ nav.site-nav.scrolled {
 .testimonial-slides {
   display: flex;
   gap: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .testimonial-slide {
   min-width: 100%;
   display: block;
   border-radius: 20px;
-  overflow: hidden;
+  overflow: visible;
   opacity: 0;
   transition: opacity 0.6s ease;
   position: absolute;
@@ -1064,13 +1064,13 @@ nav.site-nav.scrolled {
 .testimonial-quote-panel::before {
   content: '\201C';
   position: absolute;
-  top: -110px;
-  left: 24px;
+  bottom: -90px;
+  left: 40px;
   font-family: 'Fraunces', Georgia, serif;
-  font-size: 420px;
+  font-size: 320px;
   font-weight: 700;
   line-height: 1;
-  color: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.12);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -1084,10 +1084,11 @@ nav.site-nav.scrolled {
 
 .quote-pre,
 .quote-post {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.72;
-  color: rgba(255,255,255,0.92);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.95);
   margin: 0;
   font-weight: 400;
 }
