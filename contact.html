@@ -262,10 +262,11 @@ nav.site-nav {
 
 .hero-bg__image {
   position: absolute;
-  top: -10%;
+  top: -15%;
   left: 0;
   right: 0;
-  height: 120%;
+  height: 140%;
+  will-change: transform;
 }
 .hero-bg__image img {
   width: 100%;
@@ -830,9 +831,9 @@ footer.site-footer {
      ============================================ -->
 <section class="insights-hero contact-hero">
   <div class="hero-bg">
-    <div class="hero-bg__image">
-      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1800&q=80"
-           alt="Three professionals smiling in a modern conference room">
+    <div class="hero-bg__image parallax-bg" data-speed="0.18" id="heroBg">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=80"
+           alt="Business team meeting and smiling in a modern conference room">
     </div>
     <div class="hero-bg__overlay"></div>
     <div class="hero-bg__orange-accent"></div>
@@ -997,13 +998,30 @@ footer.site-footer {
   });
 })();
 
-// filter pill toggle (visual only for now)
-document.querySelectorAll('.filter-pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('is-active'));
-    p.classList.add('is-active');
-  });
-});
+// --- Hero parallax ---
+(function(){
+  const heroBg = document.getElementById('heroBg');
+  if (!heroBg) return;
+  const speed = parseFloat(heroBg.dataset.speed) || 0.18;
+  let rafId = null;
+
+  function update() {
+    const parent = heroBg.parentElement;
+    const rect = parent.getBoundingClientRect();
+    const vH = window.innerHeight;
+    if (rect.bottom < -200 || rect.top > vH + 200) { rafId = null; return; }
+    const sectionCenter = rect.top + rect.height / 2;
+    const offset = (sectionCenter - vH / 2) * speed;
+    heroBg.style.transform = `translate3d(0, ${offset}px, 0)`;
+    rafId = null;
+  }
+  window.addEventListener('scroll', () => {
+    if (!rafId) rafId = requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', () => { if (!rafId) rafId = requestAnimationFrame(update); });
+  window.addEventListener('load', update);
+  update();
+})();
 </script>
 
 </body>
