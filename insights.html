@@ -176,29 +176,74 @@ nav.site-nav {
 .mobile-menu a.btn:first-of-type { margin-top: 20px; }
 
 /* ============================================
-   HERO
+   HERO — matches homepage hero DNA
    ============================================ */
 .insights-hero {
   position: relative;
-  padding: calc(var(--nav-h) + 120px) 0 120px;
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(232,103,26,0.10) 0%, transparent 55%),
-    linear-gradient(180deg, #faf6f1 0%, #fff 100%);
-  border-bottom: 1px solid var(--border);
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
   overflow: hidden;
 }
-.insights-hero::before {
-  content: '';
+
+.hero-bg {
   position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,103,26,0.18) 0%, transparent 65%);
-  pointer-events: none;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
-.insights-hero .wrap { position: relative; z-index: 1; }
+
+.hero-bg__image {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  right: 0;
+  height: 120%;
+}
+.hero-bg__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15,12,10,0.88) 0%,
+    rgba(20,16,12,0.80) 40%,
+    rgba(30,20,15,0.65) 100%
+  );
+  z-index: 1;
+}
+
+.hero-bg__orange-accent {
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,103,26,0.25) 0%, transparent 70%);
+  z-index: 2;
+}
+
+.insights-hero .wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-content {
+  padding: 80px 0 100px;
+  max-width: 760px;
+}
 
 .hero-eyebrow {
   display: inline-flex;
@@ -209,45 +254,51 @@ nav.site-nav {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--orange-light);
   padding: 8px 16px;
-  background: rgba(232,103,26,0.10);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 100px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 .hero-eyebrow::before {
   content: '';
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--orange-light);
 }
 
 .insights-hero h1 {
   font-family: var(--font-display);
+  font-size: clamp(28px, 4.2vw, 62px);
   font-weight: 800;
-  font-size: clamp(40px, 6vw, 84px);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  color: var(--charcoal);
-  max-width: 900px;
-  margin-bottom: 28px;
+  line-height: 1.06;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
 }
 .insights-hero h1 em {
-  font-family: var(--font-serif);
+  display: block;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  color: var(--orange);
+  color: var(--orange-light);
 }
 
 .insights-hero .hero-sub {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 700;
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(20px, 2vw, 26px);
-  line-height: 1.45;
-  color: var(--text-light);
-  max-width: 720px;
-  margin-bottom: 44px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.88);
+  max-width: 580px;
+  margin-bottom: 40px;
+}
+.insights-hero .hero-sub strong {
+  color: var(--white);
+  font-weight: 600;
+  font-style: normal;
 }
 
 /* ============================================
@@ -286,7 +337,7 @@ nav.site-nav {
   color: var(--charcoal);
 }
 .section-head h2 em {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
   color: var(--orange);
@@ -528,11 +579,22 @@ footer.site-footer {
      HERO
      ============================================ -->
 <section class="insights-hero">
+  <div class="hero-bg">
+    <div class="hero-bg__image">
+      <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=1800&q=80"
+           alt="Healthcare IT professionals collaborating">
+    </div>
+    <div class="hero-bg__overlay"></div>
+    <div class="hero-bg__orange-accent"></div>
+  </div>
+
   <div class="wrap">
-    <span class="hero-eyebrow">Insights &amp; News</span>
-    <h1>Field notes from inside the <em>Performance Partnership.</em></h1>
-    <p class="hero-sub">Practical thinking on what it takes to move off the Technology Treadmill and build predictable HIT performance — written for the leaders who own the outcome.</p>
-    <a href="#" class="btn btn--primary">Let's Talk</a>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Insights &amp; News</span>
+      <h1>Field notes from inside the<em>Performance Partnership.</em></h1>
+      <p class="hero-sub">Practical thinking on what it takes to move off the <strong>Technology Treadmill</strong> and build <strong>predictable HIT performance</strong> — written for the leaders who own the outcome.</p>
+      <a href="#" class="btn btn--primary">Let's Talk</a>
+    </div>
   </div>
 </section>
 
