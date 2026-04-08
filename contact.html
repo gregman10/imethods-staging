@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iMethods | Insights & News</title>
+<title>iMethods | Contact Us</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet">
@@ -522,6 +522,179 @@ nav.site-nav {
 }
 
 /* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact-section {
+  padding: 110px 0 140px;
+  background: var(--white);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.contact-info .eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.contact-info h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.contact-info h2 em {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+.contact-info > p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-light);
+  max-width: 440px;
+  margin-bottom: 40px;
+}
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.contact-meta-item {}
+.meta-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.meta-value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+.meta-value a {
+  color: var(--charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s, border-color 0.18s;
+}
+.meta-value a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.contact-form {
+  background: #FAF9F7;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 44px 44px 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+  position: relative;
+}
+.form-row { margin-bottom: 22px; }
+.form-row--two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--charcoal);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  width: 100%;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.contact-form select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23E8671A' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+}
+.contact-form textarea { resize: vertical; min-height: 130px; }
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(232,103,26,0.12);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: #AFA89F; }
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.form-actions .btn { min-width: 180px; justify-content: center; }
+.form-privacy {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-light);
+  flex: 1;
+  min-width: 180px;
+}
+.form-success {
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: #FFF5EF;
+  border: 1px solid rgba(232,103,26,0.25);
+  border-radius: 10px;
+  color: var(--charcoal);
+}
+.form-success strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.form-success p { font-size: 14px; color: var(--text-light); }
+
+/* ============================================
    FOOTER — matches homepage cream footer
    ============================================ */
 footer.site-footer {
@@ -578,6 +751,10 @@ footer.site-footer {
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 960px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+}
+
 @media (max-width: 768px) {
   .wrap { padding: 0 24px; }
   .nav-inner { padding: 0 24px; }
@@ -590,6 +767,12 @@ footer.site-footer {
   .section-head { margin-bottom: 44px; }
   .blog-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
+
+  .contact-section { padding: 70px 0 90px; }
+  .contact-form { padding: 32px 24px 28px; }
+  .form-row--two { grid-template-columns: 1fr; gap: 22px; }
+  .form-actions { flex-direction: column; align-items: stretch; }
+  .form-actions .btn { width: 100%; }
 }
 </style>
 </head>
@@ -613,8 +796,8 @@ footer.site-footer {
           <a href="#">Full-time Client Opportunities</a>
         </div>
       </li>
-      <li class="active"><a href="insights.html">Insights &amp; News</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="insights.html">Insights &amp; News</a></li>
+      <li class="active"><a href="contact.html">Contact</a></li>
     </ul>
 
     <div class="nav-ctas">
@@ -645,11 +828,11 @@ footer.site-footer {
 <!-- ============================================
      HERO
      ============================================ -->
-<section class="insights-hero">
+<section class="insights-hero contact-hero">
   <div class="hero-bg">
     <div class="hero-bg__image">
-      <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?w=1800&q=80"
-           alt="Team meeting in modern conference room">
+      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1800&q=80"
+           alt="Three professionals smiling in a modern conference room">
     </div>
     <div class="hero-bg__overlay"></div>
     <div class="hero-bg__orange-accent"></div>
@@ -657,128 +840,102 @@ footer.site-footer {
 
   <div class="wrap">
     <div class="hero-content">
-      <span class="hero-eyebrow">Insights &amp; News</span>
-      <h1>Field notes from inside<em>the Performance Partnership.</em></h1>
-      <p class="hero-sub">Practical thinking on what it takes to move off the <strong>Technology Treadmill</strong> and build <strong>predictable HIT performance</strong> — written for the leaders who own the outcome.</p>
-      <a href="#" class="btn btn--primary">Let's Talk</a>
+      <span class="hero-eyebrow">Contact Us</span>
+      <h1>Let's start a real<em>conversation.</em></h1>
+      <p class="hero-sub">Tell us a little about where you're coming from and what you're trying to solve. A <strong>Performance Partnership</strong> starts with a single honest conversation — not a pitch.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================
-     BLOG GRID
+     CONTACT FORM
      ============================================ -->
-<section class="blog-section">
+<section class="contact-section">
   <div class="wrap">
+    <div class="contact-grid">
 
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Latest Articles</span>
-        <h2>Ideas, frameworks, and <em>field-tested</em> thinking.</h2>
+      <div class="contact-info">
+        <span class="eyebrow">Get in touch</span>
+        <h2>We'd love to hear<em>what you're working on.</em></h2>
+        <p>Whether you're a health system leader, a consultant, or a partner, this is the right place to start. We read every message and respond within one business day.</p>
+
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <div class="meta-label">Headquarters</div>
+            <div class="meta-value">Jacksonville, FL</div>
+          </div>
+          <div class="contact-meta-item">
+            <div class="meta-label">General inquiries</div>
+            <div class="meta-value"><a href="mailto:hello@imethods.com">hello@imethods.com</a></div>
+          </div>
+          <div class="contact-meta-item">
+            <div class="meta-label">Consultants</div>
+            <div class="meta-value"><a href="mailto:consultants@imethods.com">consultants@imethods.com</a></div>
+          </div>
+        </div>
       </div>
-      <div class="filter-row">
-        <button class="filter-pill is-active">All</button>
-        <button class="filter-pill">Performance Partnership</button>
-        <button class="filter-pill">Technology Treadmill</button>
-        <button class="filter-pill">Epic &amp; KLAS</button>
-        <button class="filter-pill">Leadership</button>
-        <button class="filter-pill">Workforce</button>
-      </div>
-    </div>
 
-    <div class="blog-grid">
+      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').hidden=false; this.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);">
+        <div class="form-row">
+          <label>
+            <span class="field-label">I am a…</span>
+            <select name="role" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Healthcare CIO / CMIO / CTO</option>
+              <option>VP / Director of IT or HIT</option>
+              <option>Hospital or Health System Executive</option>
+              <option>Epic / HIT Program Owner</option>
+              <option>Consultant — looking to join iMethods</option>
+              <option>Partner / Vendor</option>
+              <option>Recruiter / Talent Leader</option>
+              <option>Press / Analyst</option>
+              <option>Something else</option>
+            </select>
+          </label>
+        </div>
 
-      <!-- Card 1 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80" alt="Two professionals meeting at a table">
-          <span class="card-tag">Performance Partnership</span>
+        <div class="form-row form-row--two">
+          <label>
+            <span class="field-label">First name</span>
+            <input type="text" name="first" required placeholder="Jane">
+          </label>
+          <label>
+            <span class="field-label">Last name</span>
+            <input type="text" name="last" required placeholder="Doe">
+          </label>
         </div>
-        <div class="card-meta">
-          <span>Mar 28, 2026</span><span class="dot"></span><span>6 min read</span>
-        </div>
-        <h3>Why "Coverage" Is Killing Your HIT Performance</h3>
-        <p>Most health systems are still buying hours when they should be buying outcomes. Here's how to tell the difference — and what to do about it.</p>
-        <span class="read-link">Read article →</span>
-      </a>
 
-      <!-- Card 2 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80" alt="Team strategy session in office">
-          <span class="card-tag">Technology Treadmill</span>
+        <div class="form-row form-row--two">
+          <label>
+            <span class="field-label">Work email</span>
+            <input type="email" name="email" required placeholder="jane@healthsystem.org">
+          </label>
+          <label>
+            <span class="field-label">Organization</span>
+            <input type="text" name="org" placeholder="Optional">
+          </label>
         </div>
-        <div class="card-meta">
-          <span>Mar 21, 2026</span><span class="dot"></span><span>8 min read</span>
-        </div>
-        <h3>The Technology Treadmill: How HIT Became a Continuous Operating Problem</h3>
-        <p>Healthcare IT stopped being a series of projects a long time ago. The model most CIOs still use hasn't caught up — and the gap is widening.</p>
-        <span class="read-link">Read article →</span>
-      </a>
 
-      <!-- Card 3 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80" alt="Doctor and colleague consulting at desk">
-          <span class="card-tag">Epic &amp; KLAS</span>
+        <div class="form-row">
+          <label>
+            <span class="field-label">What would you like to talk about?</span>
+            <textarea name="message" rows="5" required placeholder="A quick sentence or two about where you're stuck or what you'd like to explore."></textarea>
+          </label>
         </div>
-        <div class="card-meta">
-          <span>Mar 14, 2026</span><span class="dot"></span><span>5 min read</span>
-        </div>
-        <h3>Best in KLAS Doesn't Mean Best for Your System — Until It Does</h3>
-        <p>KLAS recognition is necessary but not sufficient. The firms that actually move the needle do something the scorecard can't measure.</p>
-        <span class="read-link">Read article →</span>
-      </a>
 
-      <!-- Card 4 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="Executive having a one-on-one conversation">
-          <span class="card-tag">Leadership</span>
+        <div class="form-row form-actions">
+          <button type="submit" class="btn btn--primary">Send Message</button>
+          <span class="form-privacy">We'll never share your information. One reply, from a human.</span>
         </div>
-        <div class="card-meta">
-          <span>Mar 07, 2026</span><span class="dot"></span><span>7 min read</span>
-        </div>
-        <h3>The CIO's Quietest Risk: Variable Spend on Variable Outcomes</h3>
-        <p>Boards are starting to ask harder questions about HIT investment. The answer requires a different kind of partner — and a different kind of contract.</p>
-        <span class="read-link">Read article →</span>
-      </a>
 
-      <!-- Card 5 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80" alt="Doctor and patient talking in office">
-          <span class="card-tag">Workforce</span>
+        <div class="form-success" hidden>
+          <strong>Thanks — message received.</strong>
+          <p>We'll get back to you within one business day.</p>
         </div>
-        <div class="card-meta">
-          <span>Feb 28, 2026</span><span class="dot"></span><span>6 min read</span>
-        </div>
-        <h3>Continuity Is the Performance Asset Nobody Puts on the Spec Sheet</h3>
-        <p>The right person, deeply embedded, staying long enough to actually care about the outcome — that's not staffing. That's strategy.</p>
-        <span class="read-link">Read article →</span>
-      </a>
-
-      <!-- Card 6 -->
-      <a href="#" class="blog-card">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1664575600796-ffa828c5cb6e?w=900&q=80" alt="Business partners shaking hands at conference table">
-          <span class="card-tag">Performance Partnership</span>
-        </div>
-        <div class="card-meta">
-          <span>Feb 21, 2026</span><span class="dot"></span><span>9 min read</span>
-        </div>
-        <h3>Shared Accountability: What It Actually Looks Like in a Contract</h3>
-        <p>"Partnership" is the most overused word in healthcare IT. Here's how to spot the structural differences that turn a vendor into a real one.</p>
-        <span class="read-link">Read article →</span>
-      </a>
+      </form>
 
     </div>
-
-    <div class="load-more">
-      <a href="#" class="btn btn--outline-dark">Load More Articles</a>
-    </div>
-
   </div>
 </section>
 
