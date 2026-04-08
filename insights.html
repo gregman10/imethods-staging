@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iMethods | Insights & News</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #E8671A;
+  --orange-light: #F4873A;
+  --orange-dark: #C5531A;
+  --charcoal: #1E1E1E;
+  --dark: #111111;
+  --light-gray: #F5F4F2;
+  --white: #FFFFFF;
+  --text: #222222;
+  --text-light: #555555;
+  --border: #E2E0DC;
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Montserrat', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --nav-h: 76px;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100vw; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100vw;
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  text-decoration: none;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.btn--primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+.btn--primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,103,26,0.35); }
+.btn--outline-dark { background: transparent; color: var(--charcoal); border-color: rgba(0,0,0,0.18); }
+.btn--outline-dark:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+.btn--sm { padding: 10px 20px; font-size: 13px; }
+
+/* ============================================
+   NAV
+   ============================================ */
+nav.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-logo { flex-shrink: 0; text-decoration: none; margin-right: 40px; }
+.nav-logo .logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--charcoal);
+  letter-spacing: -0.02em;
+}
+.nav-logo .logo-text span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  flex: 1;
+}
+.nav-links > li > a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--charcoal);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 8px;
+  transition: all 0.18s ease;
+}
+.nav-links > li > a:hover { background: rgba(0,0,0,0.04); }
+.nav-links .active > a { color: var(--orange); }
+
+.nav-ctas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+.nav-hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.site-nav.menu-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-nav.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+.site-nav.menu-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px 28px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a.btn { margin-top: 12px; border-bottom: 0; justify-content: center; }
+.mobile-menu a.btn:first-of-type { margin-top: 20px; }
+
+/* ============================================
+   HERO
+   ============================================ */
+.insights-hero {
+  position: relative;
+  padding: calc(var(--nav-h) + 120px) 0 120px;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(232,103,26,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, #faf6f1 0%, #fff 100%);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.insights-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,103,26,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.insights-hero .wrap { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding: 8px 16px;
+  background: rgba(232,103,26,0.10);
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.insights-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--charcoal);
+  max-width: 900px;
+  margin-bottom: 28px;
+}
+.insights-hero h1 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+.insights-hero .hero-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.45;
+  color: var(--text-light);
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+/* ============================================
+   BLOG GRID
+   ============================================ */
+.blog-section {
+  padding: 110px 0 120px;
+  background: var(--white);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 64px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.section-head .eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+}
+.section-head h2 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+.section-head .filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-pill {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-pill.is-active,
+.filter-pill:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px 36px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--charcoal);
+  transition: transform 0.25s ease;
+}
+.blog-card:hover { transform: translateY(-4px); }
+.blog-card:hover .card-img img { transform: scale(1.04); }
+
+.card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  background: var(--light-gray);
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.95);
+  color: var(--charcoal);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+.card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; }
+
+.blog-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+.blog-card:hover h3 { color: var(--orange); }
+.blog-card p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+.read-link {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer.site-footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.78);
+  padding: 80px 0 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-top h4 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+.footer-top a {
+  display: block;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  padding: 6px 0;
+  transition: color 0.18s ease;
+}
+.footer-top a:hover { color: var(--orange); }
+.footer-brand .logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.footer-brand .logo-text span { color: var(--orange); }
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.6);
+  max-width: 360px;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 28px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .wrap { padding: 0 24px; }
+  .nav-inner { padding: 0 24px; }
+  .nav-links, .nav-ctas { display: none; }
+  .nav-hamburger { display: flex; }
+  .site-nav.menu-open .mobile-menu { display: flex; }
+
+  .insights-hero { padding: calc(var(--nav-h) + 70px) 0 80px; }
+  .blog-section { padding: 70px 0 80px; }
+  .section-head { margin-bottom: 44px; }
+  .blog-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-text">i<span>Methods</span></span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#work-with-us">Work With Us</a></li>
+      <li class="active"><a href="insights.html">Insights &amp; News</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-ctas">
+      <a href="index.html" class="btn btn--outline-dark btn--sm">See How It Works</a>
+      <a href="#" class="btn btn--primary btn--sm">Let's Talk</a>
+    </div>
+
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">About</a>
+    <a href="index.html#solutions">Solutions</a>
+    <a href="index.html#work-with-us">Work With Us</a>
+    <a href="insights.html">Insights &amp; News</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html" class="btn btn--outline-dark">See How It Works</a>
+    <a href="#" class="btn btn--primary">Let's Talk</a>
+  </div>
+</nav>
+
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="insights-hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">Insights &amp; News</span>
+    <h1>Field notes from inside the <em>Performance Partnership.</em></h1>
+    <p class="hero-sub">Practical thinking on what it takes to move off the Technology Treadmill and build predictable HIT performance — written for the leaders who own the outcome.</p>
+    <a href="#" class="btn btn--primary">Let's Talk</a>
+  </div>
+</section>
+
+
+<!-- ============================================
+     BLOG GRID
+     ============================================ -->
+<section class="blog-section">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Latest Articles</span>
+        <h2>Ideas, frameworks, and <em>field-tested</em> thinking.</h2>
+      </div>
+      <div class="filter-row">
+        <button class="filter-pill is-active">All</button>
+        <button class="filter-pill">Performance Partnership</button>
+        <button class="filter-pill">Technology Treadmill</button>
+        <button class="filter-pill">Epic &amp; KLAS</button>
+        <button class="filter-pill">Leadership</button>
+        <button class="filter-pill">Workforce</button>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- Card 1 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80" alt="Healthcare IT performance">
+          <span class="card-tag">Performance Partnership</span>
+        </div>
+        <div class="card-meta">
+          <span>Mar 28, 2026</span><span class="dot"></span><span>6 min read</span>
+        </div>
+        <h3>Why "Coverage" Is Killing Your HIT Performance</h3>
+        <p>Most health systems are still buying hours when they should be buying outcomes. Here's how to tell the difference — and what to do about it.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80" alt="Hospital IT operations">
+          <span class="card-tag">Technology Treadmill</span>
+        </div>
+        <div class="card-meta">
+          <span>Mar 21, 2026</span><span class="dot"></span><span>8 min read</span>
+        </div>
+        <h3>The Technology Treadmill: How HIT Became a Continuous Operating Problem</h3>
+        <p>Healthcare IT stopped being a series of projects a long time ago. The model most CIOs still use hasn't caught up — and the gap is widening.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=900&q=80" alt="Epic optimization">
+          <span class="card-tag">Epic &amp; KLAS</span>
+        </div>
+        <div class="card-meta">
+          <span>Mar 14, 2026</span><span class="dot"></span><span>5 min read</span>
+        </div>
+        <h3>Best in KLAS Doesn't Mean Best for Your System — Until It Does</h3>
+        <p>KLAS recognition is necessary but not sufficient. The firms that actually move the needle do something the scorecard can't measure.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80" alt="Healthcare leadership">
+          <span class="card-tag">Leadership</span>
+        </div>
+        <div class="card-meta">
+          <span>Mar 07, 2026</span><span class="dot"></span><span>7 min read</span>
+        </div>
+        <h3>The CIO's Quietest Risk: Variable Spend on Variable Outcomes</h3>
+        <p>Boards are starting to ask harder questions about HIT investment. The answer requires a different kind of partner — and a different kind of contract.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=900&q=80" alt="Healthcare IT workforce">
+          <span class="card-tag">Workforce</span>
+        </div>
+        <div class="card-meta">
+          <span>Feb 28, 2026</span><span class="dot"></span><span>6 min read</span>
+        </div>
+        <h3>Continuity Is the Performance Asset Nobody Puts on the Spec Sheet</h3>
+        <p>The right person, deeply embedded, staying long enough to actually care about the outcome — that's not staffing. That's strategy.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="#" class="blog-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=900&q=80" alt="Healthcare partnership">
+          <span class="card-tag">Performance Partnership</span>
+        </div>
+        <div class="card-meta">
+          <span>Feb 21, 2026</span><span class="dot"></span><span>9 min read</span>
+        </div>
+        <h3>Shared Accountability: What It Actually Looks Like in a Contract</h3>
+        <p>"Partnership" is the most overused word in healthcare IT. Here's how to spot the structural differences that turn a vendor into a real one.</p>
+        <span class="read-link">Read article →</span>
+      </a>
+
+    </div>
+
+    <div class="load-more">
+      <a href="#" class="btn btn--outline-dark">Load More Articles</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-text">i<span>Methods</span></span>
+        <p>Healthcare IT Performance Partnerships. We help health systems move off the Technology Treadmill and achieve predictable HIT performance.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="#">Implementation</a>
+        <a href="#">Optimization</a>
+        <a href="#">Advisory Services</a>
+        <a href="#">Staffing</a>
+        <a href="#">Managed Services</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="index.html">About</a>
+        <a href="insights.html">Insights &amp; News</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+        <a href="#">Newsletter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 iMethods. All rights reserved.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  const nav = document.getElementById('siteNav');
+  const btn = document.getElementById('navHamburger');
+  if (!nav || !btn) return;
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// filter pill toggle (visual only for now)
+document.querySelectorAll('.filter-pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('is-active'));
+    p.classList.add('is-active');
+  });
+});
+</script>
+
+</body>
+</html>
