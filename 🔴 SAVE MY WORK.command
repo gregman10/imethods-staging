@@ -18,8 +18,12 @@
 
 cd "$(dirname "$0")"
 
+# Auto-detect the project name from the current folder so this
+# same script works in any project without editing.
+PROJECT_NAME=$(basename "$PWD")
+
 echo ""
-echo "🔴 SAVE MY WORK — PitchKitchen website"
+echo "🔴 SAVE MY WORK — $PROJECT_NAME"
 echo "=========================================="
 echo ""
 

@@ -7,7 +7,7 @@
 #   1. Goes into this project folder
 #   2. Downloads any changes from GitHub (git pull)
 #   3. Shows you what happened
-#   4. Closes automatically after 10 seconds
+#   4. Closes automatically after 15 seconds
 #
 # If it says "Already up to date" — you're ready to work.
 # If it says "files changed" — it downloaded updates from the
@@ -17,8 +17,12 @@
 
 cd "$(dirname "$0")"
 
+# Auto-detect the project name from the current folder so this
+# same script works in any project without editing.
+PROJECT_NAME=$(basename "$PWD")
+
 echo ""
-echo "🟢 START WORKING — PitchKitchen website"
+echo "🟢 START WORKING — $PROJECT_NAME"
 echo "=========================================="
 echo ""
 echo "Downloading the latest changes from GitHub..."
