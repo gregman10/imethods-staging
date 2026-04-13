@@ -1026,24 +1026,23 @@ nav.site-nav.scrolled {
 }
 
 .platform-badges {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
+  max-width: 900px;
+  margin: 0 auto 32px;
 }
 
 .platform-badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 14px 32px;
+  gap: 14px;
+  padding: 14px 22px 14px 14px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 100px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--white);
@@ -1051,9 +1050,30 @@ nav.site-nav.scrolled {
 }
 
 .platform-badge:hover {
-  background: rgba(232,103,26,0.15);
+  background: rgba(232,103,26,0.12);
   border-color: rgba(232,103,26,0.4);
 }
+
+.platform-badge:hover .pb-icon {
+  background: rgba(232,103,26,0.35);
+  border-color: rgba(232,103,26,0.6);
+}
+
+.pb-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(232,103,26,0.18);
+  border: 1px solid rgba(232,103,26,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--orange);
+  transition: all 0.22s;
+}
+
+.pb-icon svg { width: 20px; height: 20px; }
 
 .platforms-support {
   text-align: center;
@@ -1594,8 +1614,10 @@ footer.site-footer {
   .hero .wrap { padding: 0 24px; }
   .hero-content { padding: 60px 0 80px; }
   .value-grid { grid-template-columns: 1fr; }
-  .platform-badges { gap: 10px; }
-  .platform-badge { padding: 10px 20px; font-size: 13px; }
+  .platform-badges { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .platform-badge { padding: 10px 16px 10px 10px; font-size: 13px; }
+  .pb-icon { width: 34px; height: 34px; }
+  .pb-icon svg { width: 17px; height: 17px; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
 }
 
@@ -2020,12 +2042,55 @@ footer.site-footer {
     </div>
 
     <div class="platform-badges fade-in">
-      <div class="platform-badge">Epic</div>
-      <div class="platform-badge">Oracle / Cerner</div>
-      <div class="platform-badge">Revenue Cycle</div>
-      <div class="platform-badge">Clinical Workflows</div>
-      <div class="platform-badge">Application Support Models</div>
-      <div class="platform-badge">Governance and Operational Alignment</div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Activity / EKG waveform → Epic -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        Epic
+      </div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Database cylinders → Oracle / Cerner -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        Oracle / Cerner
+      </div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Dollar sign in circle → Revenue Cycle -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5a3 3 0 0 0-6 0c0 3 6 3 6 6a3 3 0 0 1-6 0"/></svg>
+        </div>
+        Revenue Cycle
+      </div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Git branch → Clinical Workflows -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+        </div>
+        Clinical Workflows
+      </div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Layers stack → Application Support -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        Application Support
+      </div>
+
+      <div class="platform-badge">
+        <div class="pb-icon">
+          <!-- Shield check → Governance -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        Governance &amp; Alignment
+      </div>
+
     </div>
   </div>
 </section>
