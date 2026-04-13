@@ -1166,7 +1166,7 @@ nav.site-nav.scrolled {
 
 .stf-skill-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -1174,8 +1174,12 @@ nav.site-nav.scrolled {
   background: var(--light-gray);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 28px 24px;
+  padding: 32px 28px 28px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .stf-skill-card:hover {
@@ -1183,8 +1187,24 @@ nav.site-nav.scrolled {
   box-shadow: 0 8px 28px rgba(0,0,0,0.07);
 }
 
+.stf-skill-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(232,103,26,0.12);
+  border: 1px solid rgba(232,103,26,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.stf-skill-icon svg { width: 26px; height: 26px; }
+
 .stf-skill-card h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1192,6 +1212,7 @@ nav.site-nav.scrolled {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  width: 100%;
 }
 
 .stf-skill-card ul {
@@ -1199,6 +1220,7 @@ nav.site-nav.scrolled {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .stf-skill-card ul li {
@@ -1207,6 +1229,7 @@ nav.site-nav.scrolled {
   padding-left: 14px;
   position: relative;
   line-height: 1.4;
+  text-align: left;
 }
 
 .stf-skill-card ul li::before {
@@ -1220,19 +1243,6 @@ nav.site-nav.scrolled {
   background: var(--orange);
   opacity: 0.6;
 }
-
-/* Permanent Search card spans 2 cols on last row */
-.stf-skill-card--wide {
-  grid-column: span 3;
-  background: var(--charcoal);
-  border-color: rgba(232,103,26,0.2);
-}
-
-.stf-skill-card--wide h3 { color: var(--orange-light); border-color: rgba(255,255,255,0.1); }
-
-.stf-skill-card--wide ul li { color: rgba(255,255,255,0.7); }
-
-.stf-skill-card--wide ul li::before { background: var(--orange-light); }
 
 /* ============================================
    WHEN THE NEED EVOLVES
@@ -1529,8 +1539,7 @@ footer.site-footer {
   .stf-intro-right { padding: 60px 40px; }
   .stf-cards { grid-template-columns: 1fr; }
   .stf-why-grid { grid-template-columns: 1fr; }
-  .stf-skill-grid { grid-template-columns: repeat(2, 1fr); }
-  .stf-skill-card--wide { grid-column: span 2; }
+  .stf-skill-grid { grid-template-columns: 1fr; }
   .stf-use-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonial-quote-panel { padding: 56px 300px 56px 56px; }
   .testimonial-photo { width: 34%; }
@@ -1551,7 +1560,6 @@ footer.site-footer {
   .stf-cards { grid-template-columns: 1fr; }
   .stf-use-grid { grid-template-columns: 1fr; }
   .stf-skill-grid { grid-template-columns: 1fr; }
-  .stf-skill-card--wide { grid-column: span 1; }
   .stf-why-grid { grid-template-columns: 1fr; }
   .testimonial-quote-panel { padding: 48px 32px 48px; }
   .testimonial-photo {
@@ -2031,7 +2039,12 @@ footer.site-footer {
     <p class="stf-skills-intro">iMethods provides staff augmentation, consult-to-perm, and permanent search services across a wide range of enterprise roles. Our team is your team.</p>
 
     <div class="stf-skill-grid">
+
       <div class="stf-skill-card fade-in">
+        <div class="stf-skill-icon">
+          <!-- Clipboard / Project Leadership -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>
+        </div>
         <h3>Program &amp; Project Leadership</h3>
         <ul>
           <li>Project Managers</li>
@@ -2040,6 +2053,10 @@ footer.site-footer {
       </div>
 
       <div class="stf-skill-card fade-in fade-in-delay-1">
+        <div class="stf-skill-icon">
+          <!-- Activity / Clinical -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
         <h3>Clinical &amp; Business Applications</h3>
         <ul>
           <li>Clinical Systems Analysts</li>
@@ -2048,7 +2065,11 @@ footer.site-footer {
         </ul>
       </div>
 
-      <div class="stf-skill-card fade-in fade-in-delay-2">
+      <div class="stf-skill-card fade-in">
+        <div class="stf-skill-icon">
+          <!-- Code / Technical -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
         <h3>Technical &amp; Integration Support</h3>
         <ul>
           <li>Developers</li>
@@ -2060,7 +2081,11 @@ footer.site-footer {
         </ul>
       </div>
 
-      <div class="stf-skill-card fade-in">
+      <div class="stf-skill-card fade-in fade-in-delay-1">
+        <div class="stf-skill-icon">
+          <!-- Bar Chart / Data -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
         <h3>Data, Reporting &amp; Testing</h3>
         <ul>
           <li>Reporting &amp; Analytics</li>
@@ -2069,7 +2094,11 @@ footer.site-footer {
         </ul>
       </div>
 
-      <div class="stf-skill-card fade-in fade-in-delay-1">
+      <div class="stf-skill-card fade-in">
+        <div class="stf-skill-icon">
+          <!-- Book / Training -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
         <h3>Support, Training &amp; Enablement</h3>
         <ul>
           <li>Help Desk Support</li>
@@ -2079,12 +2108,17 @@ footer.site-footer {
         </ul>
       </div>
 
-      <div class="stf-skill-card stf-skill-card--wide fade-in fade-in-delay-2">
+      <div class="stf-skill-card fade-in fade-in-delay-1">
+        <div class="stf-skill-icon">
+          <!-- Search / Permanent -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8a3 3 0 1 1 0 6"/></svg>
+        </div>
         <h3>Permanent Search</h3>
-        <ul style="flex-direction:row; flex-wrap:wrap; gap:8px 32px;">
+        <ul>
           <li>Permanent search support for health systems seeking long-term hires across key healthcare IT roles.</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
