@@ -1491,7 +1491,9 @@ footer.site-footer {
    ============================================ */
 .impl-intro-left::after,
 .opt-outcomes-right::after,
-.platforms-section::after {
+.platforms-section::after,
+.impl-intro-left::after,
+.opt-outcomes-right::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1602,6 +1604,14 @@ footer.site-footer {
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(24px, 6vw, 36px); }
 }
+
+.impl-intro-left { position: relative; overflow: hidden; }
+.impl-intro-left > * { position: relative; z-index: 1; }
+
+
+.opt-outcomes-right { position: relative; overflow: hidden; }
+.opt-outcomes-right > * { position: relative; z-index: 1; }
+
 </style>
 </head>
 

@@ -424,11 +424,10 @@ nav.site-nav.scrolled {
 }
 
 .hero h1 em {
-  display: block;
+  display: inline;
   font-style: italic;
   font-weight: 300;
   color: var(--orange-light);
-  white-space: normal;
 }
 
 .hero-subhead {
@@ -1510,7 +1509,8 @@ footer.site-footer {
    WAVE OVERLAY (SVG matching reference PNG)
    ============================================ */
 .impl-intro-left::after,
-.platforms-section::after {
+.platforms-section::after,
+.impl-intro-left::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1560,6 +1560,10 @@ footer.site-footer {
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(24px, 6vw, 36px); }
 }
+
+.impl-intro-left { position: relative; overflow: hidden; }
+.impl-intro-left > * { position: relative; z-index: 1; }
+
 </style>
 </head>
 
