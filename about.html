@@ -1278,7 +1278,8 @@ footer.site-footer {
 /* ============================================
    WAVE OVERLAY (SVG matching reference PNG)
    ============================================ */
-.about-text-panel--orange::after {
+.about-text-panel--orange::after,
+.awards-strip::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1397,6 +1398,7 @@ footer.site-footer {
   .cta-strip-inner { flex-direction: column; align-items: flex-start; }
 }
 
+.awards-strip > * { position: relative; z-index: 1; }
 </style>
 </head>
 
@@ -1435,6 +1437,7 @@ footer.site-footer {
 
     <div class="nav-ctas">
       <a href="contact.html" class="btn btn--primary btn--sm">Let's Talk</a>
+      <a href="#" class="btn btn--outline-dark btn--sm">See How It Works</a>
     </div>
 
     <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -1481,7 +1484,7 @@ footer.site-footer {
       <p class="hero-support">For us, partnership is not a tagline. It is how we show up. It is reflected in the way we listen, the way we follow through, and the way we work alongside health systems over time.</p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn btn--primary">Let's Talk</a>
-        <a href="#who-we-are" class="btn btn--outline">Learn More</a>
+        <a href="#" class="btn btn--outline">See How It Works</a>
       </div>
     </div>
   </div>
@@ -1569,6 +1572,11 @@ footer.site-footer {
 </section>
 
 
+
+<div style="padding: 40px 0; text-align: center; background: var(--white);">
+  <a href="contact.html" class="btn btn--primary">Let's Talk</a>
+</div>
+
 <!-- ============================================
      PHOTO BREAK 1
      ============================================ -->
@@ -1642,6 +1650,11 @@ footer.site-footer {
   </div>
 </section>
 
+
+
+<div style="padding: 40px 0; text-align: center; background: var(--light-gray);">
+  <a href="contact.html" class="btn btn--primary">Let's Talk</a>
+</div>
 
 <!-- ============================================
      6. PROOF STRIP
