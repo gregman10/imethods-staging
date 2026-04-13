@@ -1550,6 +1550,20 @@ footer.site-footer {
 .opt-outcomes-right { position: relative; overflow: hidden; }
 .opt-outcomes-right > * { position: relative; z-index: 1; }
 
+/* Visible quotation marks on testimonial blocks */
+.quote-pre::before {
+  content: '\201C';
+  margin-right: 2px;
+}
+.quote-post::after {
+  content: '\201D';
+  margin-left: 2px;
+}
+/* For testimonials with no quote-post, close after quote-big */
+.quote-big + .testimonial-source::before {
+  display: block;
+}
+
 </style>
 </head>
 

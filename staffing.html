@@ -1676,6 +1676,20 @@ footer.site-footer {
   .testimonial-quote-panel { border-radius: 20px 20px 0 0; min-height: auto; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
 }
+/* Visible quotation marks on testimonial blocks */
+.quote-pre::before {
+  content: '\201C';
+  margin-right: 2px;
+}
+.quote-post::after {
+  content: '\201D';
+  margin-left: 2px;
+}
+/* For testimonials with no quote-post, close after quote-big */
+.quote-big + .testimonial-source::before {
+  display: block;
+}
+
 </style>
 </head>
 <body>

@@ -1883,7 +1883,7 @@ footer.site-footer {
   padding-left: 40px;
 }
 
-.ms-intro-left .eyebrow { color: rgba(255,255,255,0.75); }
+.ms-intro-left .eyebrow { color: rgba(255,255,255,0.90); }
 
 .ms-intro-left h2 {
   font-family: var(--font-display);
@@ -1904,13 +1904,13 @@ footer.site-footer {
   font-size: 16px;
   font-weight: 700;
   font-style: italic;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,1.0);
   margin-bottom: 20px;
 }
 
 .ms-intro-left p {
   font-size: 15px;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255,255,255,1.0);
   line-height: 1.75;
   margin-bottom: 14px;
 }
@@ -1919,6 +1919,8 @@ footer.site-footer {
   list-style: none;
   padding: 0;
   margin: 24px 0 32px;
+  background: transparent;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -2067,6 +2069,20 @@ footer.site-footer {
   .ms-why-card:last-child:nth-child(odd) { grid-column: auto; max-width: none; }
 }
 
+/* Visible quotation marks on testimonial blocks */
+.quote-pre::before {
+  content: '\201C';
+  margin-right: 2px;
+}
+.quote-post::after {
+  content: '\201D';
+  margin-left: 2px;
+}
+/* For testimonials with no quote-post, close after quote-big */
+.quote-big + .testimonial-source::before {
+  display: block;
+}
+
 </style>
 
 <nav class="site-nav" id="siteNav">
@@ -2143,7 +2159,7 @@ footer.site-footer {
   <div class="wrap">
     <div class="hero-content">
       <span class="eyebrow eyebrow--white">Managed Services</span>
-      <h1>Build More Stability Into<br><em>Healthcare IT Performance.</em></h1>
+      <h1>Build More Stability Into <em>Healthcare IT Performance.</em></h1>
       <p class="hero-subhead">Managed Services helps health systems bring greater continuity, accountability, and structure to ongoing healthcare IT delivery.</p>
       <p class="hero-support">iMethods partners with health systems to manage defined scopes of work across complex healthcare IT environments, helping teams reduce volatility, strengthen operational confidence, and move toward Predictable HIT Performance.</p>
       <div class="hero-ctas">
@@ -2302,7 +2318,7 @@ footer.site-footer {
     </div>
   </div>
   <div class="ms-intro-right">
-    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&auto=format&fit=crop"
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&q=80&auto=format&fit=crop"
          alt="iMethods managed services partnership team"
          loading="lazy">
   </div>
@@ -2435,7 +2451,7 @@ footer.site-footer {
           <div class="testimonial-quote-panel">
             <div class="testimonial-text-col">
               <p class="quote-pre">iMethods was responsive. They were very eager and happy to participate. They helped a lot. They were very adaptable.</p>
-              <h3 class="quote-big">I wouldn&#8217;t do the service<br>without them.</h3>
+              <h3 class="quote-big">I wouldn&#8217;t do the service<br>without them.&#8221;</h3>
               <p class="testimonial-source">CMIO &nbsp;&middot;&nbsp; July 2025</p>
             </div>
             <div class="testimonial-photo">
