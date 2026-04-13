@@ -1676,9 +1676,172 @@ footer.site-footer {
   .testimonial-quote-panel { border-radius: 20px 20px 0 0; min-height: auto; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* ============================================
+   MANAGED SERVICES PAGE STYLES
+   ============================================ */
+
+/* ---- INTRO SPLIT ---- */
+.ms-intro {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+
+.ms-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.ms-intro-left h2 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+
+.ms-intro-subhead {
+  font-size: 17px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--orange);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.ms-intro-left p {
+  font-size: 15.5px;
+  color: var(--text-light);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.ms-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--light-gray);
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ms-feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.ms-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ms-feature-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---- WHY SECTION ---- */
+.ms-why {
+  padding: var(--section-pad) 0;
+  background: var(--light-gray);
+}
+
+.ms-why .section-header { margin-bottom: 20px; }
+
+.ms-why-intro {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-light);
+  max-width: 640px;
+  margin: 0 auto 56px;
+  line-height: 1.7;
+}
+
+.ms-why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* 5th card centered if odd */
+.ms-why-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.ms-why-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 36px 32px;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.ms-why-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+  border-color: rgba(232,103,26,0.25);
+}
+
+.ms-why-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(232,103,26,0.10);
+  border: 1px solid rgba(232,103,26,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.ms-why-icon svg { width: 22px; height: 22px; }
+
+.ms-why-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.ms-why-body p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .ms-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ms-why-grid { grid-template-columns: 1fr; }
+  .ms-why-card:last-child:nth-child(odd) { grid-column: auto; max-width: none; }
+}
+
+@media (max-width: 600px) {
+  .ms-feature-list { padding: 24px 20px; }
+}
+
 </style>
-</head>
-<body>
 
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
@@ -1735,30 +1898,26 @@ footer.site-footer {
   </div>
 </nav>
 
+<main>
 
 <!-- ============================================
      1. HERO
      ============================================ -->
-<section class="hero">
-  <div class="hero-bg">
-    <div class="hero-bg__image parallax-photo" id="heroBg" data-speed="0.18">
-      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80"
-           alt="Healthcare IT professionals in a collaborative meeting"
-           onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80'">
-    </div>
-    <div class="hero-bg__overlay"></div>
-    <div class="hero-bg__orange-accent"></div>
+<section class="hero" id="heroSection">
+  <div class="hero-bg" data-speed="0.18">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80&auto=format&fit=crop"
+         alt="iMethods Managed Services partnership"
+         style="width:100%;height:100%;object-fit:cover;object-position:center;">
   </div>
-
-  <div class="wrap">
-    <div class="hero-content">
-      <span class="eyebrow eyebrow--white">Staffing</span>
-      <h1>Get the Right Healthcare IT Expertise <em>Without Slowing Down.</em></h1>
-      <p class="hero-subhead">Add experienced consultants for targeted needs, defined roles, and critical initiatives across complex healthcare IT environments.</p>
-      <p class="hero-support">iMethods helps health systems strengthen their teams with experienced healthcare IT consultants who match both the technical demands of the role and the realities of the organization.</p>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-text fade-in">
+      <span class="eyebrow eyebrow--white">Managed Services</span>
+      <h1>Build More Stability Into<br><em>Healthcare IT Performance.</em></h1>
+      <p class="hero-subhead">Managed Services helps health systems bring greater continuity, accountability, and structure to ongoing healthcare IT delivery.</p>
+      <p style="font-size:15px; color:rgba(255,255,255,0.78); line-height:1.7; max-width:520px; margin-bottom:36px;">iMethods partners with health systems to manage defined scopes of work across complex healthcare IT environments, helping teams reduce volatility, strengthen operational confidence, and move toward Predictable HIT Performance.</p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
-        <a href="#" class="btn btn--outline">See How It Works</a>
       </div>
     </div>
   </div>
@@ -1766,12 +1925,12 @@ footer.site-footer {
 
 
 <!-- ============================================
-     2. WHO THIS IS FOR
+     2. WHO THIS IS FOR (from homepage)
      ============================================ -->
 <section class="who-we-serve">
   <div class="wrap">
     <div class="section-header fade-in" style="margin-bottom:18px;">
-      <span class="eyebrow" style="color:var(--orange);">Who This Is For</span>
+      <span class="eyebrow" style="color:var(--orange);">Who We Partner With</span>
     </div>
     <div class="who-grid fade-in">
       <div class="who-item">
@@ -1794,7 +1953,6 @@ footer.site-footer {
         <div class="who-icon">
           <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="36" cy="28" r="7" fill="#777"/>
-            <path d="M24 52c0-6.6 5.4-12 12-12s12 5.4 12 52" stroke="none"/>
             <ellipse cx="36" cy="52" rx="12" ry="8" fill="#777"/>
             <circle cx="18" cy="32" r="5.5" fill="#999"/>
             <ellipse cx="18" cy="50" rx="9" ry="6" fill="#999"/>
@@ -1824,7 +1982,7 @@ footer.site-footer {
 
 
 <!-- ============================================
-     3. AUTHORITY / PROOF STRIP
+     3. AUTHORITY / PROOF STRIP (from homepage)
      ============================================ -->
 <section class="proof-strip">
   <div class="wrap">
@@ -1843,7 +2001,7 @@ footer.site-footer {
         <div class="klas-ring">
           <div class="klas-ring-inner">
             <span class="klas-ring-text">BEST IN</span>
-            <span style="font-size:13px; font-weight:900; color:var(--orange-light); letter-spacing:0.08em; text-transform:uppercase; line-height:1;">KLAS®</span>
+            <span style="font-size:13px; font-weight:900; color:var(--orange-light); letter-spacing:0.08em; text-transform:uppercase; line-height:1;">KLAS&#174;</span>
             <span class="klas-ring-year">2026</span>
           </div>
         </div>
@@ -1865,7 +2023,7 @@ footer.site-footer {
 
 
 <!-- ============================================
-     4. TRIBE OF CUSTOMERS (LOGOS MARQUEE)
+     4. CLIENT LOGOS MARQUEE (from homepage)
      ============================================ -->
 <section class="logos-section">
   <div class="logos-label">Trusted by leading health systems nationwide</div>
@@ -1891,74 +2049,62 @@ footer.site-footer {
 
 
 <!-- ============================================
-     5. INTRODUCING STAFFING
+     5. INTRODUCING MANAGED SERVICES
      ============================================ -->
-<section class="stf-intro">
-  <div class="stf-intro-left">
-    <div class="wrap-inner">
-      <span class="eyebrow">Staffing</span>
-      <h2>iMethods Staffing</h2>
-      <p class="stf-intro-subhead">Targeted Healthcare IT Consulting Support for Defined Needs</p>
-      <div class="stf-intro-body">
-        <p>When health systems need additional capacity, specialized expertise, or support for a clearly defined period of time, Staffing provides a flexible way to strengthen the team without changing the underlying operating model.</p>
-        <p>iMethods connects organizations with experienced healthcare IT consultants for targeted needs across enterprise EHR and healthcare IT environments. That may include short-term support, project-based work, fixed-duration initiatives, or coverage for critical gaps where the right expertise is needed quickly.</p>
-        <p>This model works best when the need is clear, the scope is defined, and internal leadership remains responsible for directing the work.</p>
-      </div>
-    </div>
-  </div>
-  <div class="stf-intro-right">
-    <img src="https://imethods.com/wp-content/uploads/2022/08/22-iMethods-03-Lifestyle-Rd3-16-scaled.jpg"
-         alt="iMethods consultants collaborating"
-         onerror="this.src='https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80'">
-  </div>
-</section>
-
-
-<!-- ============================================
-     CTA STRIP (after section 5 — 3rd strip)
-     ============================================ -->
-<div class="inline-cta">
-  <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
-</div>
-
-
-<!-- ============================================
-     6. STAFFING SOLUTIONS CARDS
-     ============================================ -->
-<section class="stf-solutions">
+<section class="ms-intro">
   <div class="wrap">
-    <div class="section-header fade-in">
-      <span class="eyebrow">Staffing</span>
-      <h2>Staffing Solutions That <em>Fit Your Need</em></h2>
-    </div>
-    <p class="stf-solutions-sub">Different situations require different staffing approaches. iMethods supports multiple models to align with how your organization hires and operates.</p>
-
-    <div class="stf-cards">
-      <div class="stf-card fade-in">
-        <div class="stf-card-icon">
-          <!-- Users / Augmentation -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <div class="ms-intro-grid">
+      <div class="ms-intro-left fade-in">
+        <span class="eyebrow" style="color:var(--orange);">Managed Services</span>
+        <h2>How Managed Services Works</h2>
+        <p class="ms-intro-subhead">A More Structured Partnership for Ongoing Healthcare IT Performance</p>
+        <p>Healthcare IT does not pause after go-live.</p>
+        <p>Support needs continue. Optimization priorities build. New initiatives emerge. And internal teams are often expected to absorb all of it while maintaining stability across a complex environment.</p>
+        <p>Managed Services gives health systems a more structured way to move this work forward. iMethods partners with organizations to manage defined scopes of work with greater continuity, stronger coordination, and shared accountability.</p>
+        <p>The result is a steadier model for ongoing delivery &mdash; one designed to reduce volatility, strengthen operational confidence, and support more predictable performance over time.</p>
+        <div style="margin-top:36px;">
+          <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
         </div>
-        <h3>Staff Augmentation</h3>
-        <p>Add experienced healthcare IT consultants to support short-term needs, project work, or targeted gaps across your team.</p>
       </div>
-
-      <div class="stf-card fade-in fade-in-delay-1">
-        <div class="stf-card-icon">
-          <!-- Repeat / Cycle → Consult-to-Perm -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-        </div>
-        <h3>Consult-to-Perm</h3>
-        <p>Evaluate consultants in your environment before making a long-term hiring decision, reducing risk and improving fit.</p>
-      </div>
-
-      <div class="stf-card fade-in fade-in-delay-2">
-        <div class="stf-card-icon">
-          <!-- Briefcase → Permanent Placement -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3>Permanent Placement</h3>
-        <p>Identify and hire full-time healthcare IT talent aligned to both the technical requirements and culture of your organization.</p>
+      <div class="ms-intro-right fade-in fade-in-delay-1">
+        <ul class="ms-feature-list">
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Defined scope</strong></span>
+          </li>
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Structured delivery</strong></span>
+          </li>
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Shared accountability</strong></span>
+          </li>
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Operational continuity</strong></span>
+          </li>
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Program governance</strong></span>
+          </li>
+          <li>
+            <span class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Long-term partnership</strong></span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1966,138 +2112,60 @@ footer.site-footer {
 
 
 <!-- ============================================
-     7. WHEN STAFFING FITS BEST
+     6. WHY HEALTH SYSTEMS CHOOSE iMETHODS
      ============================================ -->
-<section class="stf-use-cases">
+<section class="ms-why">
   <div class="wrap">
-    <div class="section-header fade-in">
-      <span class="eyebrow eyebrow--dark">Staffing</span>
-      <h2>When Staffing <em style="font-style:italic; font-weight:300; color:var(--orange-light);">Fits Best</em></h2>
+    <div class="section-header fade-in" style="text-align:center;">
+      <span class="eyebrow" style="color:var(--orange);">Why Managed Services</span>
+      <h2>Why Health Systems Choose iMethods<br><em>for Managed Services</em></h2>
     </div>
-    <p class="stf-use-body">Staffing is the right fit when the organization needs experienced support for a defined role, initiative, or period of time.</p>
+    <p class="ms-why-intro fade-in">Health systems need more than extra support to sustain performance across a complex healthcare IT environment. They need a partner who can bring structure to the work, continuity across priorities, and accountability for execution over time.</p>
 
-    <div class="stf-use-grid fade-in">
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="ms-why-grid">
+      <div class="ms-why-card fade-in">
+        <div class="ms-why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
-        <span class="stf-use-text">Short-term capacity support</span>
-      </div>
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="stf-use-text">Temporary backfill for team gaps</span>
-      </div>
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="stf-use-text">Project-based initiatives</span>
-      </div>
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="stf-use-text">Fixed start and end date work</span>
-      </div>
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="stf-use-text">Specialized expertise for a clearly defined need</span>
-      </div>
-      <div class="stf-use-item">
-        <div class="stf-use-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <span class="stf-use-text">Flexible support during periods of change</span>
-      </div>
-    </div>
-
-    <p class="stf-use-closing fade-in">This model helps health systems add the right expertise where and when it is needed — without overextending internal teams.</p>
-  </div>
-</section>
-
-
-<!-- ============================================
-     PHOTO BREAK
-     ============================================ -->
-<div class="photo-break">
-  <div class="photo-break-img parallax-photo" data-speed="0.18" id="pbImg1">
-    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80"
-         alt="Healthcare IT team collaboration"
-         onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80'">
-  </div>
-  <div class="photo-break-overlay" style="background:rgba(232,103,26,0.75);">
-    <div class="photo-break-quote">
-      <p>The right expertise, placed in the right environment, at the right time.</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================
-     CTA STRIP (after section 7 — 6th strip)
-     ============================================ -->
-<div class="inline-cta">
-  <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
-</div>
-
-
-<!-- ============================================
-     8. WHY HEALTH SYSTEMS CHOOSE iMETHODS
-     ============================================ -->
-<section class="stf-why">
-  <div class="wrap">
-    <div class="section-header fade-in">
-      <span class="eyebrow">Staffing</span>
-      <h2>Why Health Systems <em>Choose iMethods</em> for Staffing</h2>
-    </div>
-    <p class="stf-why-intro">Not all healthcare IT staffing models are the same. iMethods brings healthcare-specific expertise, relationship-driven recruiting, and a quality-centered approach that helps health systems find consultants who can contribute quickly and work effectively inside complex environments.</p>
-
-    <div class="stf-why-grid">
-      <div class="stf-why-card fade-in">
-        <div class="stf-why-icon">
-          <!-- Award / KLAS -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        </div>
-        <div class="stf-why-body">
-          <h3>Best in KLAS Credibility</h3>
-          <p>iMethods has been recognized as Best in KLAS for HIT Staffing, reflecting a long-standing commitment to quality, experience, and performance.</p>
+        <div class="ms-why-body">
+          <h3>Built for Complex Healthcare IT Environments</h3>
+          <p>iMethods understands the operational, clinical, and technical realities that shape performance across enterprise healthcare IT.</p>
         </div>
       </div>
-
-      <div class="stf-why-card fade-in fade-in-delay-1">
-        <div class="stf-why-icon">
-          <!-- Target / Fit -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <div class="ms-why-card fade-in fade-in-delay-1">
+        <div class="ms-why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="stf-why-body">
-          <h3>Fit Beyond the Resume</h3>
-          <p>The goal is not simply to match a resume to a requirement. iMethods focuses on identifying consultants who align with both the technical demands of the role and the working style of the organization.</p>
+        <div class="ms-why-body">
+          <h3>Partnership, Not Just Coverage</h3>
+          <p>Managed Services is designed to create a closer working model built on alignment, responsiveness, and shared accountability.</p>
         </div>
       </div>
-
-      <div class="stf-why-card fade-in">
-        <div class="stf-why-icon">
-          <!-- Link / Relationship -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <div class="ms-why-card fade-in fade-in-delay-2">
+        <div class="ms-why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
         </div>
-        <div class="stf-why-body">
-          <h3>Relationship-Driven Recruiting</h3>
-          <p>Strong industry relationships help iMethods connect health systems with highly relevant healthcare IT consultants across a wide range of skill areas.</p>
+        <div class="ms-why-body">
+          <h3>Continuity Across Ongoing Work</h3>
+          <p>Consistency matters when priorities evolve and operational demands do not pause. iMethods helps create steadier delivery across the work that must keep moving.</p>
         </div>
       </div>
-
-      <div class="stf-why-card fade-in fade-in-delay-1">
-        <div class="stf-why-icon">
-          <!-- Check Circle / Follow-Through -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div class="ms-why-card fade-in">
+        <div class="ms-why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
-        <div class="stf-why-body">
-          <h3>Ongoing Follow-Through</h3>
-          <p>Support does not stop once a consultant is placed. iMethods stays engaged through onboarding support, quality check-ins, and follow-through designed to help the engagement stay on track.</p>
+        <div class="ms-why-body">
+          <h3>Structured Oversight and Coordination</h3>
+          <p>Managed Services brings more coordination, visibility, and operational discipline to defined scopes of work.</p>
+        </div>
+      </div>
+      <div class="ms-why-card fade-in fade-in-delay-1">
+        <div class="ms-why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="ms-why-body">
+          <h3>A More Accountable Model</h3>
+          <p>The focus is not simply activity. It is supporting execution in a way that helps reduce volatility and strengthen confidence over time.</p>
         </div>
       </div>
     </div>
@@ -2106,129 +2174,7 @@ footer.site-footer {
 
 
 <!-- ============================================
-     9. SKILL AREAS WE SUPPORT
-     ============================================ -->
-<section class="stf-skills">
-  <div class="wrap">
-    <div class="section-header fade-in">
-      <span class="eyebrow eyebrow--white">Staffing for Skills</span>
-      <h2>Skill Areas <em>We Support</em></h2>
-    </div>
-    <p class="stf-skills-intro">iMethods provides staff augmentation, consult-to-perm, and permanent search services across a wide range of enterprise roles. Our team is your team.</p>
-
-    <div class="stf-skill-grid">
-
-      <div class="stf-skill-card fade-in">
-        <div class="stf-skill-icon">
-          <!-- Clipboard / Project Leadership -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>
-        </div>
-        <h3>Program &amp; Project Leadership</h3>
-        <ul>
-          <li>Project Managers</li>
-          <li>Program Managers</li>
-        </ul>
-      </div>
-
-      <div class="stf-skill-card fade-in fade-in-delay-1">
-        <div class="stf-skill-icon">
-          <!-- Activity / Clinical -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3>Clinical &amp; Business Applications</h3>
-        <ul>
-          <li>Clinical Systems Analysts</li>
-          <li>Business Systems Analysts</li>
-          <li>Clinical Informaticists</li>
-        </ul>
-      </div>
-
-      <div class="stf-skill-card fade-in">
-        <div class="stf-skill-icon">
-          <!-- Code / Technical -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <h3>Technical &amp; Integration Support</h3>
-        <ul>
-          <li>Developers</li>
-          <li>Integration Support</li>
-          <li>Interface Support</li>
-          <li>Technical Architects</li>
-          <li>Engineers</li>
-          <li>Technical Analysts</li>
-        </ul>
-      </div>
-
-      <div class="stf-skill-card fade-in fade-in-delay-1">
-        <div class="stf-skill-icon">
-          <!-- Bar Chart / Data -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-        </div>
-        <h3>Data, Reporting &amp; Testing</h3>
-        <ul>
-          <li>Reporting &amp; Analytics</li>
-          <li>QA Testing Engineers</li>
-          <li>Clinical Decision Support</li>
-        </ul>
-      </div>
-
-      <div class="stf-skill-card fade-in">
-        <div class="stf-skill-icon">
-          <!-- Book / Training -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <h3>Support, Training &amp; Enablement</h3>
-        <ul>
-          <li>Help Desk Support</li>
-          <li>Desktop Support</li>
-          <li>Training</li>
-          <li>Education</li>
-        </ul>
-      </div>
-
-      <div class="stf-skill-card fade-in fade-in-delay-1">
-        <div class="stf-skill-icon">
-          <!-- Search / Permanent -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8a3 3 0 1 1 0 6"/></svg>
-        </div>
-        <h3>Permanent Search</h3>
-        <ul>
-          <li>Permanent search support for health systems seeking long-term hires across key healthcare IT roles.</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================
-     CTA STRIP (after section 9 — 9th strip)
-     ============================================ -->
-<div class="inline-cta">
-  <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
-</div>
-
-
-<!-- ============================================
-     10. WHEN THE NEED EVOLVES
-     ============================================ -->
-<section class="stf-evolves">
-  <div class="wrap">
-    <span class="eyebrow">Staffing as the First Step</span>
-    <h2>When the Need Evolves,<br>the Model Can Evolve</h2>
-    <p>Staffing is often the right answer for short-term, targeted, and clearly defined needs.</p>
-    <p>When the challenge becomes less about filling a role and more about creating structure, continuity, and accountability around execution, a different model may be the better fit.</p>
-    <p>That gives health systems the flexibility to start with the support they need today while preserving a path toward a more structured partnership as needs grow more complex.</p>
-    <div style="margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================
-     11. TESTIMONIALS
+     7. TESTIMONIALS (exact copy from homepage)
      ============================================ -->
 <section class="testimonials">
   <div class="wrap">
@@ -2241,7 +2187,7 @@ footer.site-footer {
               <p class="quote-pre">It was clear that the resource we hired was a strategic fit for the team. They understood where we were as an organization. They had just rolled off of a similar project, so they were able to</p>
               <h3 class="quote-big">talk the talk,<br>walk the walk,</h3>
               <p class="quote-post">and provide insight to us. They helped us understand what the project would entail from a work perspective. It was pretty evident from the get-go that we had the right fit.</p>
-              <p class="testimonial-source">Director &nbsp;·&nbsp; October 2025</p>
+              <p class="testimonial-source">Director &nbsp;&middot;&nbsp; October 2025</p>
             </div>
             <div class="testimonial-photo">
               <img src="https://imethods.com/wp-content/uploads/2019/12/22-iMethods-03-Lifestyle-Rd3-33.jpg"
@@ -2257,7 +2203,7 @@ footer.site-footer {
               <p class="quote-pre">We have</p>
               <h3 class="quote-big">a very transparent<br>relationship.</h3>
               <p class="quote-post">We meet very regularly. The firm will often do check-ins with us to see how things are going not just at the project level but also at a more strategic level in terms of how they can be supportive of the organization as a whole. We have had opportunities to engage other leaders to talk about challenging HIT recruitment. The firm has been tremendous in facilitating those conversations. They are very helpful.</p>
-              <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+              <p class="testimonial-source">VP / Executive &nbsp;&middot;&nbsp; October 2025</p>
             </div>
             <div class="testimonial-photo">
               <img src="https://imethods.com/wp-content/uploads/2022/08/22-iMethods-03-Lifestyle-Rd3-16-scaled.jpg"
@@ -2273,7 +2219,7 @@ footer.site-footer {
               <p class="quote-pre">The firm is a tremendous resource. They understand the landscape and the uniqueness that comes with servicing clients. They are</p>
               <h3 class="quote-big">phenomenal on<br>every level.</h3>
               <p class="quote-post">We are very impressed with the company.</p>
-              <p class="testimonial-source">VP / Executive &nbsp;·&nbsp; October 2025</p>
+              <p class="testimonial-source">VP / Executive &nbsp;&middot;&nbsp; October 2025</p>
             </div>
             <div class="testimonial-photo">
               <img src="https://imethods.com/wp-content/uploads/2019/12/22-iMethods-03-Lifestyle-Rd3-3-scaled.jpg"
@@ -2289,7 +2235,7 @@ footer.site-footer {
               <p class="quote-pre">We have had a long partnership with iMethods.</p>
               <h3 class="quote-big">They really lean into<br>the partnership</h3>
               <p class="quote-post">and take feedback really well. We have had some tough areas with other firms, but iMethods has held their ground for us. They have provided excellent service at a much lower price point than other firms. iMethods has provided a lot of resources, and we are surprised at how good their consultant resources have been.</p>
-              <p class="testimonial-source">CIO &nbsp;·&nbsp; September 2025</p>
+              <p class="testimonial-source">CIO &nbsp;&middot;&nbsp; September 2025</p>
             </div>
             <div class="testimonial-photo">
               <img src="https://imethods.com/wp-content/uploads/2020/11/22-iMethods-03-Lifestyle-Rd3-6.jpg"
@@ -2303,8 +2249,8 @@ footer.site-footer {
           <div class="testimonial-quote-panel">
             <div class="testimonial-text-col">
               <p class="quote-pre">iMethods was responsive. They were very eager and happy to participate. They helped a lot. They were very adaptable.</p>
-              <h3 class="quote-big">I wouldn't do the service<br>without them.</h3>
-              <p class="testimonial-source">CMIO &nbsp;·&nbsp; July 2025</p>
+              <h3 class="quote-big">I wouldn&#8217;t do the service<br>without them.</h3>
+              <p class="testimonial-source">CMIO &nbsp;&middot;&nbsp; July 2025</p>
             </div>
             <div class="testimonial-photo">
               <img src="https://imethods.com/wp-content/uploads/2020/11/VP-Exec-ii-scaled.jpg"
@@ -2315,7 +2261,6 @@ footer.site-footer {
         </div>
 
       </div>
-
       <div class="slider-controls">
         <button class="slider-btn" id="slidePrev" aria-label="Previous">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2337,17 +2282,18 @@ footer.site-footer {
 
 
 <!-- ============================================
-     12. FINAL CTA
+     8. FINAL CTA
      ============================================ -->
 <div style="padding: 64px 0; text-align: center; background: var(--light-gray); border-top: 1px solid var(--border);">
   <div class="wrap" style="max-width: 600px;">
     <span class="eyebrow">Ready to Start?</span>
-    <h2 style="font-size: clamp(28px, 3vw, 44px); color: var(--text); margin-bottom: 16px; line-height: 1.15;">Let&#8217;s Find the Right<br><em style="color:var(--orange);">Consultant for Your Team</em></h2>
-    <p style="font-size: 16px; color: var(--text-light); margin-bottom: 36px; line-height: 1.65;">Talk with iMethods about your staffing needs and find out how we can help you add the right expertise quickly.</p>
+    <h2 style="font-size: clamp(28px, 3vw, 44px); color: var(--text); margin-bottom: 16px; line-height: 1.15;">Let&#8217;s Build a More<br><em style="color:var(--orange);">Stable Partnership</em></h2>
+    <p style="font-size: 16px; color: var(--text-light); margin-bottom: 36px; line-height: 1.65;">Talk with iMethods about your managed services needs and how we can help you bring greater structure and continuity to healthcare IT delivery.</p>
     <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
   </div>
 </div>
 
+</main>
 
 <footer class="site-footer">
   <div class="wrap" style="max-width:1320px;">
