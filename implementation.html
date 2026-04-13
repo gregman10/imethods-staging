@@ -864,89 +864,251 @@ nav.site-nav.scrolled {
 .check-list li .check-icon svg { width: 14px; height: 14px; }
 
 /* ============================================
-   HOW IMPLEMENTATION WORKS (7-step process)
+   HOW IMPLEMENTATION WORKS — Lifecycle Wheel
    ============================================ */
-.how-it-works {
+.lifecycle-section {
   padding: var(--section-pad) 0;
-  background: var(--light-gray);
+  background: var(--charcoal);
+  color: var(--white);
+  overflow: hidden;
 }
 
-.how-it-works .wrap {
-  max-width: 800px;
-}
+.lifecycle-section .section-header { text-align: center; margin-bottom: 16px; }
+.lifecycle-section .section-header h2 { color: var(--white); }
+.lifecycle-section .section-header h2 em { font-weight: 300; }
+.lifecycle-section .section-header .eyebrow { color: rgba(255,255,255,0.6); }
 
-.how-it-works .section-header { margin-bottom: 20px; }
-
-.how-intro {
+.lifecycle-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+  color: rgba(255,255,255,0.72);
   font-size: 16px;
   line-height: 1.7;
-  color: var(--text-light);
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 56px;
 }
 
-.impl-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+/* ── 3-column layout ── */
+.lifecycle-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px 1fr;
+  gap: 0 36px;
+  align-items: center;
+  max-width: 1060px;
+  margin: 0 auto;
 }
 
-.impl-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 24px 28px;
-  background: var(--white);
-  border: 1px solid var(--border);
+/* ── Step columns ── */
+.lc-steps { display: flex; flex-direction: column; gap: 36px; }
+.lc-steps--left { align-items: flex-end; text-align: right; }
+.lc-steps--right { align-items: flex-start; text-align: left; }
+
+.lc-step {
+  max-width: 280px;
+  padding: 18px 22px;
   border-radius: 12px;
-  transition: all 0.22s ease;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+  cursor: default;
 }
 
-.impl-step:hover {
-  border-color: var(--orange);
-  box-shadow: 0 8px 28px rgba(232,103,26,0.1);
+.lc-step:hover,
+.lc-step.active {
+  background: rgba(232,103,26,0.12);
+  border-color: rgba(232,103,26,0.35);
   transform: translateY(-2px);
 }
 
-.impl-step-num {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: rgba(232,103,26,0.1);
-  border: 1px solid rgba(232,103,26,0.2);
+.lc-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.lc-step:hover .lc-step-num { transform: scale(1.15); }
+
+.lc-step h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.lc-step p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.55;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.lc-step:hover p,
+.lc-step.active p {
+  max-height: 120px;
+  opacity: 1;
+}
+
+/* ── Center wheel ── */
+.lc-wheel {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.lc-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lc-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  box-shadow: 0 0 0 14px rgba(232,103,26,0.13), 0 0 0 28px rgba(232,103,26,0.06);
+  z-index: 2;
+}
+
+.lc-hub-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.lc-hub-sub {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  font-style: italic;
+  font-weight: 300;
+  margin-top: 3px;
+}
+
+/* ── Wheel nodes ── */
+.lc-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  border: 2.5px solid var(--orange);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
   color: var(--orange);
+  z-index: 2;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(232,103,26,0.10);
 }
 
-.impl-step-content h3 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
+.lc-node:hover,
+.lc-node.active {
+  background: var(--orange);
+  color: var(--white);
+  transform: translate(-50%, -50%) scale(1.18);
+  box-shadow: 0 0 0 8px rgba(232,103,26,0.25);
 }
 
-.impl-step-content p {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--text-light);
-}
+/* ring radius = 120px, center = 170,170 */
+.lc-node-1 { left: calc(50% + 0px);    top: calc(50% - 120px); }
+.lc-node-2 { left: calc(50% + 94px);   top: calc(50% - 75px); }
+.lc-node-3 { left: calc(50% + 117px);  top: calc(50% + 27px); }
+.lc-node-4 { left: calc(50% + 52px);   top: calc(50% + 108px); }
+.lc-node-5 { left: calc(50% - 52px);   top: calc(50% + 108px); }
+.lc-node-6 { left: calc(50% - 117px);  top: calc(50% + 27px); }
+.lc-node-7 { left: calc(50% - 94px);   top: calc(50% - 75px); }
 
-.how-closing {
+/* ── Closing + CTA ── */
+.lifecycle-closing {
   font-size: 16px;
   line-height: 1.7;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.65);
   text-align: center;
   max-width: 640px;
-  margin: 48px auto 0;
+  margin: 60px auto 0;
   font-style: italic;
+}
+
+/* ── Mobile: collapse to vertical list ── */
+@media (max-width: 900px) {
+  .lifecycle-layout { display: none; }
+  .lc-mobile { display: flex; }
+}
+
+.lc-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lc-mobile-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+.lc-mobile-step .lc-step-num {
+  margin-bottom: 0;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.lc-mobile-step h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.lc-mobile-step p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.6;
+  max-height: none;
+  opacity: 1;
 }
 
 /* ============================================
@@ -1863,73 +2025,155 @@ footer.site-footer {
 
 
 <!-- ============================================
-     6. HOW IMPLEMENTATION WORKS (7 steps)
+     6. HOW IMPLEMENTATION WORKS — Lifecycle Wheel
      ============================================ -->
-<section class="how-it-works">
+<section class="lifecycle-section">
   <div class="wrap">
     <div class="section-header fade-in">
-      <span class="eyebrow" style="color:var(--orange);">Implementation</span>
-      <h2>How Implementation Works</h2>
+      <span class="eyebrow" style="color:rgba(255,255,255,0.6);">Implementation</span>
+      <h2>How Implementation <em>Works</em></h2>
     </div>
 
-    <p class="how-intro fade-in">Implementation is built to help health systems move complex healthcare IT initiatives forward with more structure, stronger coordination, and greater confidence in execution.</p>
+    <p class="lifecycle-intro fade-in">Implementation is built to help health systems move complex healthcare IT initiatives forward with more structure, stronger coordination, and greater confidence in execution.</p>
 
-    <div class="impl-steps">
-      <div class="impl-step fade-in">
-        <div class="impl-step-num">1</div>
-        <div class="impl-step-content">
-          <h3>Implementation Planning</h3>
-          <p>Every engagement begins with a clear understanding of the initiative, the environment, and the outcomes that matter most.</p>
-        </div>
+    <!-- ── Desktop: 3-column lifecycle wheel ── -->
+    <div class="lifecycle-layout">
+
+      <!-- Left column: steps 7, 6, 5 -->
+      <div class="lc-steps lc-steps--left">
+      <div class="lc-step fade-in" data-step="7">
+        <div class="lc-step-num">7</div>
+        <h3>Post-Live Stabilization</h3>
+        <p>The work does not end at go-live. Stabilization is where continuity matters most.</p>
       </div>
-      <div class="impl-step fade-in fade-in-delay-1">
-        <div class="impl-step-num">2</div>
-        <div class="impl-step-content">
-          <h3>Experienced Consultant Alignment</h3>
-          <p>iMethods brings experienced healthcare IT consultants matched to the needs of the initiative and the realities of the client environment.</p>
-        </div>
+      <div class="lc-step fade-in" data-step="6">
+        <div class="lc-step-num">6</div>
+        <h3>Go-Live Readiness</h3>
+        <p>Preparation for go-live requires alignment across operational, technical, and organizational readiness.</p>
       </div>
-      <div class="impl-step fade-in fade-in-delay-2">
-        <div class="impl-step-num">3</div>
-        <div class="impl-step-content">
-          <h3>Structured Coordination</h3>
-          <p>Complex implementations depend on more than individual effort. They require coordination across teams, decisions, dependencies, and workstreams.</p>
-        </div>
+      <div class="lc-step fade-in" data-step="5">
+        <div class="lc-step-num">5</div>
+        <h3>Shared Accountability</h3>
+        <p>Implementation is built around close partnership with client stakeholders and shared accountability for execution.</p>
       </div>
-      <div class="impl-step fade-in">
-        <div class="impl-step-num">4</div>
-        <div class="impl-step-content">
-          <h3>Program Governance</h3>
-          <p>Structured governance creates visibility into priorities, progress, risks, and decision points throughout the initiative.</p>
-        </div>
       </div>
-      <div class="impl-step fade-in fade-in-delay-1">
-        <div class="impl-step-num">5</div>
-        <div class="impl-step-content">
-          <h3>Shared Accountability</h3>
-          <p>Implementation is built around close partnership with client stakeholders and shared accountability for execution.</p>
+
+      <!-- Center wheel -->
+      <div class="lc-wheel fade-in">
+        <svg class="lc-ring-svg" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dashed ring -->
+          <circle cx="170" cy="170" r="120" stroke="rgba(232,103,26,0.22)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <path d="M194.9,52.6 A120,120 0 0,1 246.2,77.3" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M277.3,116.3 A120,120 0 0,1 290.0,171.8" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M278.9,220.4 A120,120 0 0,1 243.4,264.9" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M198.4,286.6 A120,120 0 0,1 141.6,286.6" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M96.6,264.9 A120,120 0 0,1 61.1,220.4" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M50.0,171.8 A120,120 0 0,1 62.7,116.3" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <path d="M93.8,77.3 A120,120 0 0,1 145.1,52.6" fill="none" stroke="rgba(232,103,26,0.35)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <polygon points="226.6,64.1 217.2,62.8 219.8,57.4" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="288.1,148.2 283.2,140.1 289.0,138.7" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="260.7,248.7 264.0,239.8 268.7,243.6" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="165.0,290.0 174.0,287.0 174.0,293.0" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="73.1,240.9 81.0,246.1 76.3,249.8" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="54.1,138.4 55.0,147.9 49.2,146.5" fill="rgba(232,103,26,0.5)"/>
+    <polygon points="122.4,59.7 115.6,66.3 113.0,60.9" fill="rgba(232,103,26,0.5)"/>
+        </svg>
+        <div class="lc-hub">
+          <span class="lc-hub-title">Implementation</span>
+          <em class="lc-hub-sub">Lifecycle</em>
         </div>
+      <div class="lc-node lc-node-1" data-step="1">1</div>
+      <div class="lc-node lc-node-2" data-step="2">2</div>
+      <div class="lc-node lc-node-3" data-step="3">3</div>
+      <div class="lc-node lc-node-4" data-step="4">4</div>
+      <div class="lc-node lc-node-5" data-step="5">5</div>
+      <div class="lc-node lc-node-6" data-step="6">6</div>
+      <div class="lc-node lc-node-7" data-step="7">7</div>
       </div>
-      <div class="impl-step fade-in fade-in-delay-2">
-        <div class="impl-step-num">6</div>
-        <div class="impl-step-content">
-          <h3>Go-Live Readiness</h3>
-          <p>Preparation for go-live requires alignment across operational, technical, and organizational readiness.</p>
-        </div>
+
+      <!-- Right column: steps 1, 2, 3, 4 -->
+      <div class="lc-steps lc-steps--right">
+      <div class="lc-step fade-in" data-step="1">
+        <div class="lc-step-num">1</div>
+        <h3>Implementation Planning</h3>
+        <p>Every engagement begins with a clear understanding of the initiative, the environment, and the outcomes that matter most.</p>
       </div>
-      <div class="impl-step fade-in">
-        <div class="impl-step-num">7</div>
-        <div class="impl-step-content">
-          <h3>Post-Live Stabilization</h3>
-          <p>The work does not end at go-live. Stabilization is where continuity matters most.</p>
-        </div>
+      <div class="lc-step fade-in fade-in-delay-1" data-step="2">
+        <div class="lc-step-num">2</div>
+        <h3>Consultant Alignment</h3>
+        <p>iMethods brings experienced healthcare IT consultants matched to the needs of the initiative and the realities of the client environment.</p>
       </div>
+      <div class="lc-step fade-in fade-in-delay-2" data-step="3">
+        <div class="lc-step-num">3</div>
+        <h3>Structured Coordination</h3>
+        <p>Complex implementations depend on coordination across teams, decisions, dependencies, and workstreams.</p>
+      </div>
+      <div class="lc-step fade-in" data-step="4">
+        <div class="lc-step-num">4</div>
+        <h3>Program Governance</h3>
+        <p>Structured governance creates visibility into priorities, progress, risks, and decision points throughout the initiative.</p>
+      </div>
+      </div>
+
     </div>
 
-    <p class="how-closing fade-in">This is how health systems reduce implementation volatility, strengthen continuity, and build a more stable path to performance.</p>
+    <!-- ── Mobile: vertical list ── -->
+    <div class="lc-mobile">
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">1</div>
+      <div>
+        <h3>Implementation Planning</h3>
+        <p>Every engagement begins with a clear understanding of the initiative, the environment, and the outcomes that matter most.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">2</div>
+      <div>
+        <h3>Consultant Alignment</h3>
+        <p>iMethods brings experienced healthcare IT consultants matched to the needs of the initiative and the realities of the client environment.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">3</div>
+      <div>
+        <h3>Structured Coordination</h3>
+        <p>Complex implementations depend on coordination across teams, decisions, dependencies, and workstreams.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">4</div>
+      <div>
+        <h3>Program Governance</h3>
+        <p>Structured governance creates visibility into priorities, progress, risks, and decision points throughout the initiative.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">5</div>
+      <div>
+        <h3>Shared Accountability</h3>
+        <p>Implementation is built around close partnership with client stakeholders and shared accountability for execution.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">6</div>
+      <div>
+        <h3>Go-Live Readiness</h3>
+        <p>Preparation for go-live requires alignment across operational, technical, and organizational readiness.</p>
+      </div>
+    </div>
+    <div class="lc-mobile-step fade-in">
+      <div class="lc-step-num">7</div>
+      <div>
+        <h3>Post-Live Stabilization</h3>
+        <p>The work does not end at go-live. Stabilization is where continuity matters most.</p>
+      </div>
+    </div>
+    </div>
+
+    <p class="lifecycle-closing fade-in">This is how health systems reduce implementation volatility, strengthen continuity, and build a more stable path to performance.</p>
 
     <div class="section-cta fade-in">
-      <a href="contact.html" class="btn btn--primary">Let's Talk</a>
+      <a href="contact.html" class="btn btn--primary">Let&#8217;s Talk</a>
     </div>
   </div>
 </section>
@@ -2327,6 +2571,35 @@ if (track) {
     .reduce((sum, el) => sum + el.offsetWidth, 0);
   track.style.setProperty('--marquee-half', totalW + 'px');
 }
+</script>
+
+
+<script>
+// Lifecycle wheel hover interaction
+document.addEventListener('DOMContentLoaded', function() {
+  const nodes = document.querySelectorAll('.lc-node');
+  const steps = document.querySelectorAll('.lc-step');
+
+  function highlight(n) {
+    nodes.forEach(nd => nd.classList.toggle('active', nd.dataset.step === n));
+    steps.forEach(st => st.classList.toggle('active', st.dataset.step === n));
+  }
+
+  function clearAll() {
+    nodes.forEach(nd => nd.classList.remove('active'));
+    steps.forEach(st => st.classList.remove('active'));
+  }
+
+  nodes.forEach(nd => {
+    nd.addEventListener('mouseenter', () => highlight(nd.dataset.step));
+    nd.addEventListener('mouseleave', clearAll);
+  });
+
+  steps.forEach(st => {
+    st.addEventListener('mouseenter', () => highlight(st.dataset.step));
+    st.addEventListener('mouseleave', clearAll);
+  });
+});
 </script>
 
 </body>
