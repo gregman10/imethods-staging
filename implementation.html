@@ -1081,11 +1081,6 @@ nav.site-nav.scrolled {
 }
 
 /* ── Mobile: collapse to vertical list ── */
-@media (max-width: 900px) {
-  .lifecycle-layout { display: none; }
-  .lc-mobile { display: flex; }
-}
-
 .lc-mobile {
   display: none;
   flex-direction: column;
@@ -1124,6 +1119,11 @@ nav.site-nav.scrolled {
   line-height: 1.6;
   max-height: none;
   opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .lifecycle-layout { display: none; }
+  .lc-mobile { display: flex; }
 }
 
 /* ============================================
