@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+  A11Y NOTES (WCAG 2.1 AA):
+  - Skip-to-content link added after opening body tag
+  - main landmark wraps primary content
+  - prefers-reduced-motion media query disables animations
+  - Testimonial dots are button elements with aria-label
+  - Decorative SVGs have aria-hidden="true"
+  - See individual A11Y comments inline for details
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -775,9 +784,42 @@ footer.site-footer {
   .form-actions { flex-direction: column; align-items: stretch; }
   .form-actions .btn { width: 100%; }
 }
+
+/* A11Y: Skip-to-content link — visible on focus only */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* A11Y: Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .parallax-photo { transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 
 <!-- ============================================
      NAV
@@ -829,6 +871,9 @@ footer.site-footer {
 <!-- ============================================
      HERO
      ============================================ -->
+<!-- A11Y: Main content landmark -->
+<main id="main-content">
+
 <section class="insights-hero contact-hero">
   <div class="hero-bg">
     <div class="hero-bg__image parallax-bg" data-speed="0.18" id="heroBg">
@@ -944,6 +989,9 @@ footer.site-footer {
 <!-- ============================================
      FOOTER
      ============================================ -->
+
+</main>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">

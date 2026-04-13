@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+  A11Y NOTES (WCAG 2.1 AA):
+  - Skip-to-content link added after opening body tag
+  - main landmark wraps primary content
+  - prefers-reduced-motion media query disables animations
+  - Testimonial dots are button elements with aria-label
+  - Decorative SVGs have aria-hidden="true"
+  - See individual A11Y comments inline for details
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -561,7 +570,7 @@ nav.site-nav.scrolled {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.62);
   line-height: 1.5;
 }
 
@@ -1014,7 +1023,7 @@ nav.site-nav.scrolled {
 .stf-use-closing {
   text-align: center;
   font-size: 15px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.62);
   max-width: 560px;
   margin: 0 auto;
   line-height: 1.65;
@@ -2084,6 +2093,37 @@ footer.site-footer {
   display: block;
 }
 
+
+/* A11Y: Skip-to-content link — visible on focus only */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* A11Y: Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .parallax-photo { transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
 </style>
 
 <nav class="site-nav" id="siteNav">
@@ -2141,7 +2181,7 @@ footer.site-footer {
   </div>
 </nav>
 
-<main>
+<main id="main-content">
 
 <!-- ============================================
      1. HERO
@@ -2308,12 +2348,12 @@ footer.site-footer {
       <p>Healthcare IT does not pause after go-live. Support needs continue. Optimization priorities build. New initiatives emerge.</p>
       <p>Managed Services gives health systems a more structured way to move this work forward &mdash; managing defined scopes of work with greater continuity, stronger coordination, and shared accountability.</p>
       <ul class="ms-feature-list">
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Defined scope</li>
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Structured delivery</li>
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Shared accountability</li>
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Operational continuity</li>
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Program governance</li>
-        <li><span class="ms-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Long-term partnership</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Defined scope</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Structured delivery</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Shared accountability</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Operational continuity</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Program governance</li>
+        <li><span class="ms-feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Long-term partnership</li>
       </ul>
       <a href="contact.html" class="btn btn--white">Let&#8217;s Talk</a>
     </div>
@@ -2395,7 +2435,7 @@ footer.site-footer {
 <section class="testimonials">
   <div class="wrap">
     <div class="testimonial-slider">
-      <div class="testimonial-slides" id="testimonialSlides">
+      <div class="testimonial-slides" id="testimonialSlides" aria-live="polite" aria-atomic="true">
         <div class="testimonial-slide active">
           <div class="testimonial-quote-panel">
             <div class="testimonial-text-col">
@@ -2466,11 +2506,11 @@ footer.site-footer {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="slider-dots" id="sliderDots">
-          <div class="dot active" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
-          <div class="dot" data-index="3"></div>
-          <div class="dot" data-index="4"></div>
+          <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="dot" data-index="3" aria-label="Slide 4"></button>
+          <button class="dot" data-index="4" aria-label="Slide 5"></button>
         </div>
         <button class="slider-btn" id="slideNext" aria-label="Next">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

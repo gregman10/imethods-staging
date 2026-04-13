@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+  A11Y NOTES (WCAG 2.1 AA):
+  - Skip-to-content link added after opening body tag
+  - main landmark wraps primary content
+  - prefers-reduced-motion media query disables animations
+  - Testimonial dots are button elements with aria-label
+  - Decorative SVGs have aria-hidden="true"
+  - See individual A11Y comments inline for details
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -528,7 +537,7 @@ nav.site-nav.scrolled {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.62);
   line-height: 1.5;
 }
 
@@ -1031,7 +1040,7 @@ nav.site-nav.scrolled {
 .awards-support {
   text-align: center;
   font-size: 15px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.62);
   margin-top: 36px;
   max-width: 640px;
   margin-left: auto;
@@ -1095,7 +1104,7 @@ nav.site-nav.scrolled {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.62);
   line-height: 1.5;
 }
 
@@ -1402,10 +1411,43 @@ footer.site-footer {
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(24px, 6vw, 36px); }
 }
+
+/* A11Y: Skip-to-content link — visible on focus only */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* A11Y: Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .parallax-photo { transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
 </style>
 </head>
 
 <body>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 
 <!-- ============================================
      STICKY NAV
@@ -1466,6 +1508,9 @@ footer.site-footer {
 <!-- ============================================
      1. HERO
      ============================================ -->
+<!-- A11Y: Main content landmark -->
+<main id="main-content">
+
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-bg__image parallax-photo" id="heroBg" data-speed="0.18">
@@ -1710,27 +1755,27 @@ footer.site-footer {
       <h2>What Consultants <em>Experience</em></h2>
       <ul class="check-list">
         <li class="fade-in">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           Clear communication before you step into a role
         </li>
         <li class="fade-in fade-in-delay-1">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           Roles aligned to your strengths and experience
         </li>
         <li class="fade-in fade-in-delay-1">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           Support during onboarding and throughout the engagement
         </li>
         <li class="fade-in fade-in-delay-2">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           Consistent follow-up and quality check-ins
         </li>
         <li class="fade-in fade-in-delay-2">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           A team that stays engaged, not just at the start
         </li>
         <li class="fade-in fade-in-delay-3">
-          <span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="check-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
           Access to future opportunities and relationships
         </li>
       </ul>
@@ -1892,6 +1937,9 @@ footer.site-footer {
 <!-- ============================================
      FOOTER
      ============================================ -->
+
+</main>
+
 <footer class="site-footer">
   <div class="wrap" style="max-width:1320px;">
     <div class="footer-top">
