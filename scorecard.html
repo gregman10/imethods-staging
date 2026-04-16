@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<!--
+  iMethods HIT Performance Scorecard — Landing page
+  Companion to imethods.com — secondary CTA / lead magnet.
+  Single-screen focused design: logo, hero statement, email capture, GET YOUR SCORE.
+  Form action is a placeholder (#) — wire to HubSpot / Mailchimp / your ESP when ready.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIT Performance Scorecard | iMethods</title>
+<meta name="description" content="A short diagnostic for health system leaders. See where your organization sits on the path to Predictable HIT Performance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   RESET & BASE (same tokens as imethods.com)
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #E8671A;
+  --orange-light: #F4873A;
+  --orange-dark: #C5531A;
+  --charcoal: #1E1E1E;
+  --dark: #111111;
+  --mid-gray: #3A3A3A;
+  --light-gray: #F5F4F2;
+  --white: #FFFFFF;
+  --text: #222222;
+  --text-light: #555555;
+  --border: #E2E0DC;
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Montserrat', 'Proxima Nova', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --nav-h: 76px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+
+/* Skip to content — a11y */
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--orange); color: var(--white);
+  padding: 12px 20px; z-index: 2000;
+  text-decoration: none; font-weight: 700;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* ============================================
+   MINIMAL HEADER (logo-only, no full nav)
+   Keeps the page focused on the single conversion action.
+   ============================================ */
+.page-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.page-header .wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-header .logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background: var(--white);
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.page-header .logo-link img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.page-header .back-link {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.page-header .back-link:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+.page-header .back-link:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 2px; }
+
+/* ============================================
+   HERO — full-bleed image, translucent overlay, centered content
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* Translucent overlay — matches site hero treatment on advisory-services */
+.hero-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15,12,10,0.88) 0%,
+    rgba(20,16,12,0.80) 40%,
+    rgba(30,20,15,0.70) 100%
+  );
+  z-index: 1;
+}
+
+/* Subtle orange glow — same decorative treatment as other iMethods heroes */
+.hero-bg__accent {
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,103,26,0.22) 0%, transparent 70%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero .wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 120px 48px 80px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-light);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.06;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange-light);
+}
+
+.hero-subhead {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+
+.hero-subhead strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ============================================
+   EMAIL CAPTURE — single inline row
+   email input + GET YOUR SCORE button side by side
+   ============================================ */
+.score-form {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border-radius: 100px;
+  padding: 6px;
+  max-width: 620px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  gap: 0;
+}
+
+.score-form input[type="email"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 22px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+
+.score-form input[type="email"]::placeholder {
+  color: #888;
+}
+
+.score-form input[type="email"]:focus {
+  outline: none;
+}
+
+.score-form .btn-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 100px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.score-form .btn-score:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232,103,26,0.4);
+}
+
+.score-form .btn-score:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+.score-form .btn-score .arrow {
+  transition: transform 0.2s;
+}
+.score-form .btn-score:hover .arrow { transform: translateX(3px); }
+
+/* Also wrap the input in a focus ring on the whole pill */
+.score-form:focus-within {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35), 0 0 0 3px rgba(232,103,26,0.3);
+}
+
+.fine-print {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  max-width: 620px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 720px) {
+  .page-header .wrap { padding: 0 20px; }
+  .page-header .logo-link { padding: 5px 10px; }
+  .page-header .logo-link img { height: 34px; }
+  .page-header .back-link { font-size: 11px; padding: 6px 10px; }
+
+  .hero .wrap { padding: 110px 20px 60px; }
+
+  /* Stack the form vertically on narrow screens */
+  .score-form {
+    flex-direction: column;
+    border-radius: 18px;
+    padding: 8px;
+    gap: 6px;
+  }
+  .score-form input[type="email"] {
+    padding: 14px 16px;
+    font-size: 15px;
+    border-radius: 12px;
+    background: var(--light-gray);
+  }
+  .score-form .btn-score {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    border-radius: 12px;
+  }
+}
+
+/* ============================================
+   STAGE MANAGEMENT (landing / quiz / results)
+   ============================================ */
+.stage[hidden] { display: none !important; }
+
+.stage--quiz, .stage--results {
+  min-height: 100vh;
+  animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   QUIZ STAGE
+   ============================================ */
+.stage--quiz {
+  background: linear-gradient(180deg, #0c0a09 0%, #1a1512 100%);
+  color: var(--white);
+  padding: 140px 0 100px;
+  position: relative;
+}
+
+.stage--quiz::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 480px;
+  background: radial-gradient(ellipse at top, rgba(232,103,26,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.quiz-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Progress bar */
+.progress-wrap { margin-bottom: 56px; }
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 14px;
+}
+
+.progress-meta .progress-percent { color: var(--orange-light); }
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--orange-light), var(--orange));
+  border-radius: 3px;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 12px rgba(232,103,26,0.45);
+}
+
+/* Question card */
+.question-card { animation: fadeInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.question-dimension {
+  color: var(--orange-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.question-text {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.28;
+  color: var(--white);
+  margin-bottom: 40px;
+  letter-spacing: -0.02em;
+}
+
+.question-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.035);
+  border: 2px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px 24px 20px 68px;
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.option-btn::before {
+  content: attr(data-letter);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  transition: all 0.2s;
+  font-family: var(--font-display);
+}
+
+.option-btn:hover {
+  background: rgba(232,103,26,0.08);
+  border-color: rgba(232,103,26,0.35);
+  transform: translateY(-1px);
+}
+
+.option-btn:hover::before {
+  border-color: var(--orange);
+  color: var(--orange-light);
+}
+
+.option-btn.is-selected {
+  background: rgba(232,103,26,0.15);
+  border-color: var(--orange);
+  color: var(--white);
+}
+
+.option-btn.is-selected::before {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+}
+
+.option-btn:focus-visible {
+  outline: 2px solid var(--orange-light);
+  outline-offset: 3px;
+}
+
+/* Quiz nav */
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-quiz {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 100px;
+  padding: 13px 26px;
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-quiz:hover:not(:disabled) {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-1px);
+}
+
+.btn-quiz:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.btn-quiz--primary {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+}
+
+.btn-quiz--primary:hover:not(:disabled) {
+  background: var(--orange-dark);
+  border-color: var(--orange-dark);
+  box-shadow: 0 6px 20px rgba(232,103,26,0.35);
+}
+
+/* ============================================
+   RESULTS STAGE
+   ============================================ */
+.stage--results {
+  background: var(--light-gray);
+  color: var(--text);
+  padding: 140px 0 120px;
+}
+
+.results-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.results-eyebrow {
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.results-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
+  color: var(--charcoal);
+}
+
+.results-title em {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+.results-lede {
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--text-light);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Level card with pyramid */
+.level-card {
+  background: var(--white);
+  border-radius: 22px;
+  padding: 44px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+  margin-bottom: 56px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: center;
+}
+
+.level-card__eyebrow {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.level-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+}
+
+.level-card__desc {
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Pyramid visualization */
+.pyramid {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
+  padding-right: 64px;
+}
+
+.pyramid__row {
+  height: 42px;
+  background: #EAE7E1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pyramid__row[data-level="1"] { width: 100%; }
+.pyramid__row[data-level="2"] { width: 82%; }
+.pyramid__row[data-level="3"] { width: 62%; }
+.pyramid__row[data-level="4"] { width: 42%; }
+
+.pyramid__row.is-current {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 6px 22px rgba(232,103,26,0.38);
+  transform: scale(1.03);
+}
+
+.pyramid__row.is-current::after {
+  content: 'YOU';
+  position: absolute;
+  right: -54px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--orange);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  background: var(--white);
+  padding: 4px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 760px) {
+  .level-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+  .pyramid { padding-right: 48px; }
+}
+
+/* Dimensions list */
+.dimensions { margin-bottom: 48px; }
+
+.dimensions__title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+
+.dim-row {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 200px 70px;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.dim-row__name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+
+.dim-bar {
+  height: 8px;
+  background: #EAE7E1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dim-bar__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 0%;
+}
+
+.dim-bar__fill[data-score="1"] { background: #D94545; }
+.dim-bar__fill[data-score="2"] { background: #E89A3A; }
+.dim-bar__fill[data-score="3"] { background: #6FA86F; }
+.dim-bar__fill[data-score="4"] { background: #2F8F4E; }
+
+.dim-row__score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: right;
+  color: var(--text-light);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.dim-row__score strong { color: var(--charcoal); font-size: 18px; }
+
+@media (max-width: 640px) {
+  .dim-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 18px 20px;
+  }
+  .dim-row__score { text-align: left; }
+}
+
+/* Recommendation block */
+.recommendation {
+  background: var(--charcoal);
+  color: var(--white);
+  border-radius: 22px;
+  padding: 52px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,103,26,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.recommendation__eyebrow {
+  color: var(--orange-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.recommendation__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  position: relative;
+}
+
+.recommendation__text {
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.recommendation__text:last-child { margin-bottom: 0; }
+.recommendation__text strong { color: var(--orange-light); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .recommendation { padding: 36px 28px; }
+}
+
+/* CTA block */
+.cta-block {
+  text-align: center;
+  padding: 28px 0 0;
+}
+
+.cta-block__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 26px);
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+
+.cta-block__text {
+  color: var(--text-light);
+  margin-bottom: 30px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+.btn-talk {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--orange);
+  color: var(--white);
+  padding: 17px 40px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  box-shadow: 0 6px 24px rgba(232,103,26,0.32);
+}
+
+.btn-talk:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 32px rgba(232,103,26,0.42);
+}
+
+.btn-talk .arrow { transition: transform 0.2s; }
+.btn-talk:hover .arrow { transform: translateX(3px); }
+
+.restart-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--text-light);
+  font-size: 13px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.restart-link:hover { color: var(--orange); }
+
+/* Mobile tweaks for quiz */
+@media (max-width: 720px) {
+  .stage--quiz { padding: 110px 0 80px; }
+  .stage--results { padding: 110px 0 80px; }
+  .quiz-inner, .results-inner { padding: 0 20px; }
+  .option-btn {
+    padding: 18px 20px 18px 60px;
+    font-size: 14px;
+  }
+  .option-btn::before { left: 16px; width: 28px; height: 28px; font-size: 12px; }
+  .btn-quiz { padding: 11px 20px; font-size: 12px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<!-- ========================================
+     PITCHKITCHEN PROTOTYPE NOTICE (site-wide banner — remove block to disable)
+     ======================================== -->
+<style id="pk-proto-banner-style">
+.pk-proto-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 30px;
+  z-index: 10000;
+  background: #1E1E1E;
+  color: rgba(255,255,255,0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  padding: 0 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(232,103,26,0.28);
+}
+.pk-proto-banner strong { color: #F4873A; font-weight: 700; letter-spacing: 0.14em; }
+.pk-proto-banner .pk-sep { color: rgba(255,255,255,0.28); margin: 0 10px; }
+@media (max-width: 760px) {
+  .pk-proto-banner {
+    font-size: 10px;
+    padding: 5px 10px;
+    height: auto;
+    min-height: 30px;
+    line-height: 1.3;
+    white-space: normal;
+  }
+  .pk-proto-banner .pk-sep { margin: 0 6px; }
+}
+/* Shift fixed nav + absolute page-header down by banner height */
+body { padding-top: 30px !important; }
+nav.site-nav { top: 30px !important; }
+.page-header { top: 30px !important; }
+</style>
+<div class="pk-proto-banner" role="note" aria-label="Prototype notice">
+  <strong>PROTOTYPE</strong><span class="pk-sep">·</span>iMethods Lead Magnet by PitchKitchen<span class="pk-sep">·</span>For Discussion Purposes Only<span class="pk-sep">·</span>Copying or using without permission is prohibited
+</div>
+<!-- /PITCHKITCHEN PROTOTYPE NOTICE -->
+
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============================================
+     MINIMAL HEADER — logo only
+     ============================================ -->
+<header class="page-header">
+  <div class="wrap">
+    <a href="index.html" class="logo-link" aria-label="iMethods home">
+      <img src="data:image/png;base64,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" alt="iMethods">
+    </a>
+    <a href="index.html" class="back-link">← Back to iMethods</a>
+  </div>
+</header>
+
+<!-- ============================================
+     HERO — scorecard pitch + email capture
+     ============================================ -->
+<main id="main">
+<section class="hero stage" id="stage-landing">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg__image">
+      <!-- One person at laptop in a conference room. Swap src if you have a preferred shot. -->
+      <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=1800&q=80"
+           alt=""
+           onerror="this.src='https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1800&q=80'">
+    </div>
+    <div class="hero-bg__overlay"></div>
+    <div class="hero-bg__accent"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="eyebrow">HIT Performance Scorecard</span>
+
+      <h1>
+        How predictable is
+        <em>your HIT performance?</em>
+      </h1>
+
+      <p class="hero-subhead">
+        A short diagnostic for health system leaders on Epic. In about three minutes, see where your HIT organization sits on the path from reactive firefighting to <strong>Predictable HIT Performance</strong> — and get a tailored recommendation delivered straight to your inbox.
+      </p>
+
+      <!--
+        Email is captured here and stored client-side until scoring completes.
+        TODO: POST the email (and final scores, if desired) to your ESP — HubSpot, Mailchimp,
+        a custom endpoint — inside handleEmailSubmit() in the script at the bottom of this file.
+      -->
+      <form class="score-form"
+            id="emailForm"
+            action="#"
+            method="post"
+            aria-label="Start the HIT Performance Scorecard">
+        <label for="score-email" class="visually-hidden" style="position:absolute; left:-9999px;">Work email</label>
+        <input id="score-email"
+               name="email"
+               type="email"
+               placeholder="Enter your work email"
+               required
+               autocomplete="email">
+        <button type="submit" class="btn-score">
+          Get Your Score <span class="arrow" aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <p class="fine-print">
+        Takes ~3 minutes. We'll email your results. No spam — just your score and next step.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     QUIZ STAGE — 7 questions, progress bar
+     ============================================ -->
+<section class="stage stage--quiz" id="stage-quiz" hidden aria-label="HIT Performance Scorecard Quiz">
+  <div class="quiz-inner">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="progressCounter">Question 1 of 7</span>
+        <span class="progress-percent" id="progressPercent">14%</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="14" id="progressBarRole">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="questionCard">
+      <div class="question-dimension" id="qDimension">Cost Predictability</div>
+      <h2 class="question-text" id="qText">Question text will render here.</h2>
+      <div class="question-options" id="qOptions" role="radiogroup" aria-labelledby="qText">
+        <!-- option-btn elements injected by JS -->
+      </div>
+    </div>
+
+    <div class="quiz-nav">
+      <button type="button" class="btn-quiz" id="btnPrev" disabled>
+        <span aria-hidden="true">←</span> Back
+      </button>
+      <button type="button" class="btn-quiz btn-quiz--primary" id="btnNext" disabled>
+        Next <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     RESULTS STAGE
+     ============================================ -->
+<section class="stage stage--results" id="stage-results" hidden aria-label="Your HIT Performance Scorecard Results">
+  <div class="results-inner">
+
+    <div class="results-header">
+      <div class="results-eyebrow">Your HIT Performance Scorecard</div>
+      <h2 class="results-title">
+        Here's where you stand
+        <em id="resLevelSubtitle">on the path to Predictable HIT Performance.</em>
+      </h2>
+      <p class="results-lede">
+        Based on your answers across 7 dimensions, here's your current level on the HIT Performance pyramid — and what the fastest route forward looks like.
+      </p>
+    </div>
+
+    <!-- Level card with pyramid -->
+    <div class="level-card">
+      <div class="level-card__text">
+        <div class="level-card__eyebrow">Your current level</div>
+        <h3 class="level-card__title" id="resLevelTitle">Technology Treadmill</h3>
+        <p class="level-card__desc" id="resLevelDesc">
+          Placeholder description — set by JS based on pyramid placement.
+        </p>
+      </div>
+      <div class="pyramid" id="resPyramid" aria-label="HIT Performance pyramid showing your current level">
+        <div class="pyramid__row" data-level="1">Fundamentals</div>
+        <div class="pyramid__row" data-level="2">Technology Reactions</div>
+        <div class="pyramid__row" data-level="3">Transformation</div>
+        <div class="pyramid__row" data-level="4">Predictable HIT Performance</div>
+      </div>
+    </div>
+
+    <!-- Per-dimension scores -->
+    <div class="dimensions">
+      <h3 class="dimensions__title">How you scored across each dimension</h3>
+      <div id="resDims">
+        <!-- .dim-row blocks injected by JS -->
+      </div>
+    </div>
+
+    <!-- Tailored recommendation -->
+    <div class="recommendation">
+      <div class="recommendation__eyebrow">What to do about it</div>
+      <h3 class="recommendation__title" id="resRecTitle">Your tailored recommendation</h3>
+      <div id="resRecBody">
+        <p class="recommendation__text">Recommendation text will be set by JS based on score pattern.</p>
+      </div>
+    </div>
+
+    <!-- Primary CTA -->
+    <div class="cta-block">
+      <h3 class="cta-block__title">Ready to go deeper?</h3>
+      <p class="cta-block__text">
+        A 30-minute conversation with iMethods is the fastest way to turn this score into a concrete plan for Predictable HIT Performance.
+      </p>
+      <a href="contact.html" class="btn-talk">
+        Let's Talk <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <div>
+        <button type="button" class="restart-link" id="restartBtn">Retake the scorecard</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<script>
+/* ============================================================
+   iMethods HIT Performance Scorecard — quiz logic
+   ------------------------------------------------------------
+   Stages: landing → quiz → results (all in-page, no reloads).
+   Questions + scoring pulled from the v0 scorecard brainstorm.
+   Pyramid levels: 1 Fundamentals · 2 Technology Reactions ·
+                   3 Transformation · 4 Predictable HIT Performance.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var TOTAL = 7;
+
+  /* --------------------------------------------------------------
+     FORMSPREE LEAD CAPTURE
+     --------------------------------------------------------------
+     To activate lead capture:
+       1. Sign up at https://formspree.io (free tier = 50 submissions/mo)
+       2. Create a new form. Copy the Form ID — the 8-char string after
+          /f/ in the endpoint URL (e.g. for  https://formspree.io/f/xyzabcde
+          the Form ID is  xyzabcde ).
+       3. Paste it between the quotes below, save, reload the page.
+     Until a Form ID is set, submissions are logged to the browser
+     console only (see submitLead() below) and the quiz flow still works.
+     Leads are captured TWICE: once when email is entered (so you don't
+     lose abandoners), once when the quiz completes (with full scores).
+     -------------------------------------------------------------- */
+  var FORMSPREE_FORM_ID = ''; // ← paste your Formspree form ID here
+
+  function submitLead(payload) {
+    payload.timestamp = new Date().toISOString();
+    payload.page_url  = window.location.href;
+    if (!FORMSPREE_FORM_ID) {
+      console.info('[scorecard-lead — not yet wired to Formspree]', payload);
+      return;
+    }
+    try {
+      fetch('https://formspree.io/f/' + FORMSPREE_FORM_ID, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function (err) { console.warn('Scorecard lead submission failed:', err); });
+    } catch (err) {
+      console.warn('Scorecard lead submission failed:', err);
+    }
+  }
+
+  // ---------- Question data ----------
+  var QUESTIONS = [
+    {
+      dimension: 'Cost Predictability',
+      text: 'Over the last 12 months, how consistently did your HIT labor costs — rates, emergency backfills, contract coverage — come in at or under plan?',
+      options: [
+        { text: 'We have no real forecast — costs land wherever they land.', score: 1 },
+        { text: 'We plan, but emergency backfills and premium rates blow the budget regularly.', score: 2 },
+        { text: 'Most years we land within 10–15% of plan, with a few predictable variances.', score: 3 },
+        { text: 'Costs are consistent and predictable quarter over quarter, with minimal surprises.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'Execution Continuity',
+      text: 'What share of your planned HIT work — quarterly upgrades, optimization, integrations — was delivered on schedule this year?',
+      options: [
+        { text: 'We firefight. Planning horizons rarely stretch past a quarter.', score: 1 },
+        { text: 'We plan, but constant interruptions push 30–50% of work off schedule.', score: 2 },
+        { text: 'About 70–85% of planned work lands on time; slips are flagged early.', score: 3 },
+        { text: 'Nearly everything we commit to lands on schedule — delivery is reliable and measured.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'Risk & Accountability',
+      text: 'When HIT performance slips, is the risk shared with a partner whose fees depend on outcomes, or carried entirely by your team?',
+      options: [
+        { text: 'Risk isn\u2019t really tracked — whoever is on call owns whatever breaks.', score: 1 },
+        { text: 'Our vendors bill by the hour regardless of outcomes; risk sits entirely with us.', score: 2 },
+        { text: 'We share risk with some partners informally, but fees aren\u2019t tied to outcomes.', score: 3 },
+        { text: 'Risk is formally shared — partner fees are tied to HIT performance outcomes.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'Strategic Execution Capacity',
+      text: 'Can your HIT organization absorb a major initiative — M&A integration, Community Connect expansion, analytics rollout — without disrupting day-to-day operations?',
+      options: [
+        { text: 'Any major initiative creates chaos — we can\u2019t safely take on more than one at a time.', score: 1 },
+        { text: 'We can take on strategic work, but day-to-day operations degrade meaningfully when we do.', score: 2 },
+        { text: 'We can run one or two major initiatives in parallel without major operational disruption.', score: 3 },
+        { text: 'Strategic initiatives run alongside operations as a matter of course — execution is separated from disruption.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'Knowledge Continuity',
+      text: 'When a key consultant or staff member rolls off, is institutional knowledge retained — or does the replacement start mostly from scratch?',
+      options: [
+        { text: 'When someone leaves, we basically start from scratch — no documentation, no handoff.', score: 1 },
+        { text: 'Some knowledge transfers, but each rotation costs us months of rebuilt context.', score: 2 },
+        { text: 'Knowledge retention is solid within teams, weaker across vendor transitions.', score: 3 },
+        { text: 'Institutional knowledge is captured and portable — rolloffs don\u2019t disrupt delivery.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'HIT as Infrastructure (Mindset)',
+      text: 'How does executive leadership treat HIT investment — primarily a cost center to optimize down, or mission-critical infrastructure to invest in?',
+      options: [
+        { text: 'Leadership treats HIT as a pure cost center to minimize.', score: 1 },
+        { text: 'HIT is seen as necessary overhead — funded reluctantly, scrutinized heavily.', score: 2 },
+        { text: 'Leadership views HIT as important, but debates its strategic value case by case.', score: 3 },
+        { text: 'HIT is treated as mission-critical infrastructure — a strategic investment.', score: 4 }
+      ]
+    },
+    {
+      dimension: 'Foundation Confidence',
+      text: 'How often do HIT infrastructure, cybersecurity, or compliance concerns still show up as active executive agenda items — versus settled background?',
+      options: [
+        { text: 'HIT infra, cyber, and compliance concerns are constantly on the executive agenda.', score: 1 },
+        { text: 'Fundamentals surface frequently — enough to distract from strategic conversations.', score: 2 },
+        { text: 'Fundamentals come up occasionally but rarely dominate the agenda.', score: 3 },
+        { text: 'Infrastructure, security, and compliance are settled — background, not foreground.', score: 4 }
+      ]
+    }
+  ];
+
+  // ---------- Pyramid level copy ----------
+  var LEVELS = {
+    1: {
+      title: 'Foundation Mode',
+      desc: 'You\u2019re still working through core infrastructure, cybersecurity, or compliance concerns. Predictable HIT Performance isn\u2019t the right conversation yet — the foundation comes first.'
+    },
+    2: {
+      title: 'Technology Treadmill',
+      desc: 'You\u2019re running hard but losing ground. Costs are unpredictable, plans get derailed, and risk sits entirely on your team. This is the MMF Villain — the pattern a Performance Partnership is built to break.'
+    },
+    3: {
+      title: 'Transformation in Motion',
+      desc: 'You\u2019ve moved past firefighting. The next jump is from \u201cmostly on plan\u201d to truly predictable performance — and it usually requires a partner who shares the outcome, not just the hours.'
+    },
+    4: {
+      title: 'Predictable HIT Performance',
+      desc: 'You\u2019re operating at the Promised Land: reliable delivery, shared risk, HIT as strategic infrastructure. The goal from here is staying there as your organization grows.'
+    }
+  };
+
+  // ---------- DOM refs ----------
+  var el = {
+    landing: document.getElementById('stage-landing'),
+    quiz:    document.getElementById('stage-quiz'),
+    results: document.getElementById('stage-results'),
+    emailForm: document.getElementById('emailForm'),
+    emailInput: document.getElementById('score-email'),
+    progressFill: document.getElementById('progressFill'),
+    progressCounter: document.getElementById('progressCounter'),
+    progressPercent: document.getElementById('progressPercent'),
+    progressBarRole: document.getElementById('progressBarRole'),
+    qDimension: document.getElementById('qDimension'),
+    qText: document.getElementById('qText'),
+    qOptions: document.getElementById('qOptions'),
+    btnPrev: document.getElementById('btnPrev'),
+    btnNext: document.getElementById('btnNext'),
+    resLevelTitle: document.getElementById('resLevelTitle'),
+    resLevelDesc:  document.getElementById('resLevelDesc'),
+    resLevelSubtitle: document.getElementById('resLevelSubtitle'),
+    resPyramid: document.getElementById('resPyramid'),
+    resDims:    document.getElementById('resDims'),
+    resRecTitle: document.getElementById('resRecTitle'),
+    resRecBody:  document.getElementById('resRecBody'),
+    restartBtn:  document.getElementById('restartBtn')
+  };
+
+  // ---------- State ----------
+  var state = {
+    email: '',
+    index: 0,
+    answers: new Array(TOTAL).fill(null) // score per question (1-4) or null
+  };
+
+  // ---------- Stage switching ----------
+  function showStage(name) {
+    el.landing.hidden = (name !== 'landing');
+    el.quiz.hidden    = (name !== 'quiz');
+    el.results.hidden = (name !== 'results');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ---------- Email submit → start quiz ----------
+  el.emailForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    state.email = (el.emailInput.value || '').trim();
+    if (!state.email) return;
+
+    // Capture the lead immediately so we don't lose anyone who bails mid-quiz
+    submitLead({
+      email: state.email,
+      stage: 'email_captured',
+      source: 'scorecard_landing'
+    });
+
+    state.index = 0;
+    state.answers = new Array(TOTAL).fill(null);
+    renderQuestion();
+    showStage('quiz');
+  });
+
+  // ---------- Quiz rendering ----------
+  var LETTERS = ['A', 'B', 'C', 'D'];
+
+  function renderQuestion() {
+    var q = QUESTIONS[state.index];
+    el.qDimension.textContent = q.dimension;
+    el.qText.textContent = q.text;
+
+    el.qOptions.innerHTML = '';
+    q.options.forEach(function (opt, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option-btn';
+      btn.setAttribute('role', 'radio');
+      btn.setAttribute('data-letter', LETTERS[i]);
+      btn.setAttribute('data-score', String(opt.score));
+      btn.setAttribute('aria-checked', 'false');
+      btn.textContent = opt.text;
+
+      if (state.answers[state.index] === opt.score) {
+        btn.classList.add('is-selected');
+        btn.setAttribute('aria-checked', 'true');
+      }
+
+      btn.addEventListener('click', function () { selectAnswer(opt.score, btn); });
+      el.qOptions.appendChild(btn);
+    });
+
+    updateProgress();
+    updateNavButtons();
+  }
+
+  function selectAnswer(score, btn) {
+    state.answers[state.index] = score;
+
+    // visual state
+    var siblings = el.qOptions.querySelectorAll('.option-btn');
+    siblings.forEach(function (b) {
+      b.classList.remove('is-selected');
+      b.setAttribute('aria-checked', 'false');
+    });
+    btn.classList.add('is-selected');
+    btn.setAttribute('aria-checked', 'true');
+
+    updateNavButtons();
+
+    // auto-advance after brief pause (unless on the last question)
+    if (state.index < TOTAL - 1) {
+      setTimeout(goNext, 320);
+    } else {
+      // last question — reveal results after brief pause
+      setTimeout(finishQuiz, 320);
+    }
+  }
+
+  function updateProgress() {
+    var pct = Math.round(((state.index + 1) / TOTAL) * 100);
+    el.progressFill.style.width = pct + '%';
+    el.progressCounter.textContent = 'Question ' + (state.index + 1) + ' of ' + TOTAL;
+    el.progressPercent.textContent = pct + '%';
+    el.progressBarRole.setAttribute('aria-valuenow', String(pct));
+  }
+
+  function updateNavButtons() {
+    el.btnPrev.disabled = (state.index === 0);
+    var answered = state.answers[state.index] !== null;
+    el.btnNext.disabled = !answered;
+    el.btnNext.textContent = '';
+    el.btnNext.appendChild(document.createTextNode(
+      state.index === TOTAL - 1 ? 'See My Score ' : 'Next '
+    ));
+    var arrow = document.createElement('span');
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '→';
+    el.btnNext.appendChild(arrow);
+  }
+
+  function goPrev() {
+    if (state.index > 0) {
+      state.index--;
+      renderQuestion();
+    }
+  }
+
+  function goNext() {
+    if (state.answers[state.index] === null) return;
+    if (state.index < TOTAL - 1) {
+      state.index++;
+      renderQuestion();
+    } else {
+      finishQuiz();
+    }
+  }
+
+  el.btnPrev.addEventListener('click', goPrev);
+  el.btnNext.addEventListener('click', goNext);
+
+  // ---------- Scoring + results ----------
+  function finishQuiz() {
+    if (state.answers.some(function (a) { return a === null; })) return;
+    renderResults();
+    showStage('results');
+
+    // Second submission: email + full scorecard results
+    var sum = state.answers.reduce(function (a, b) { return a + b; }, 0);
+    var avg = sum / TOTAL;
+    var level = levelFromAverage(avg);
+    submitLead({
+      email: state.email,
+      stage: 'scorecard_completed',
+      overall_level: level,
+      overall_level_name: LEVELS[level].title,
+      average_score: avg.toFixed(2),
+      q1_cost_predictability: state.answers[0],
+      q2_execution_continuity: state.answers[1],
+      q3_risk_accountability: state.answers[2],
+      q4_strategic_execution: state.answers[3],
+      q5_knowledge_continuity: state.answers[4],
+      q6_mindset: state.answers[5],
+      q7_foundation: state.answers[6]
+    });
+  }
+
+  function levelFromAverage(avg) {
+    if (avg < 2.0) return 1;
+    if (avg < 2.6) return 2;
+    if (avg < 3.5) return 3;
+    return 4;
+  }
+
+  function renderResults() {
+    // Average across all dimensions → overall pyramid level
+    var sum = state.answers.reduce(function (a, b) { return a + b; }, 0);
+    var avg = sum / TOTAL;
+    var overallLevel = levelFromAverage(avg);
+
+    // Level card
+    el.resLevelTitle.textContent = LEVELS[overallLevel].title;
+    el.resLevelDesc.textContent  = LEVELS[overallLevel].desc;
+
+    // Subtitle under results headline
+    if (overallLevel === 4) {
+      el.resLevelSubtitle.textContent = 'at Predictable HIT Performance.';
+    } else {
+      el.resLevelSubtitle.textContent = 'on the path to Predictable HIT Performance.';
+    }
+
+    // Pyramid highlight
+    var rows = el.resPyramid.querySelectorAll('.pyramid__row');
+    rows.forEach(function (row) {
+      row.classList.toggle('is-current', Number(row.getAttribute('data-level')) === overallLevel);
+    });
+
+    // Per-dimension bars
+    el.resDims.innerHTML = '';
+    QUESTIONS.forEach(function (q, i) {
+      var score = state.answers[i];
+      var row = document.createElement('div');
+      row.className = 'dim-row';
+
+      var name = document.createElement('div');
+      name.className = 'dim-row__name';
+      name.textContent = q.dimension;
+
+      var bar = document.createElement('div');
+      bar.className = 'dim-bar';
+      var fill = document.createElement('div');
+      fill.className = 'dim-bar__fill';
+      fill.setAttribute('data-score', String(score));
+      bar.appendChild(fill);
+
+      var scoreEl = document.createElement('div');
+      scoreEl.className = 'dim-row__score';
+      var strong = document.createElement('strong');
+      strong.textContent = score;
+      scoreEl.appendChild(strong);
+      scoreEl.appendChild(document.createTextNode(' / 4'));
+
+      row.appendChild(name);
+      row.appendChild(bar);
+      row.appendChild(scoreEl);
+      el.resDims.appendChild(row);
+
+      // Animate bar width after insertion
+      setTimeout(function () {
+        var pct = (score / 4) * 100;
+        fill.style.width = pct + '%';
+      }, 120 + i * 90);
+    });
+
+    // Tailored recommendation
+    var mindsetScore = state.answers[5]; // Q6 — HIT as Infrastructure
+    renderRecommendation(overallLevel, mindsetScore);
+  }
+
+  function renderRecommendation(level, mindset) {
+    var title = '';
+    var paragraphs = [];
+
+    // Cost-center mindset flag — MMF ICP explicitly excludes this buyer
+    if (mindset === 1) {
+      title = 'Before Performance Partnership: an internal alignment conversation';
+      paragraphs = [
+        'Your team is stretched, but executive leadership still views HIT as a pure cost center. That mindset is the biggest blocker between where you are today and <strong>Predictable HIT Performance</strong> — no partner can fix it for you.',
+        'Our honest take: the most valuable next step isn\u2019t a vendor conversation. It\u2019s getting alignment at the top on HIT as strategic infrastructure. When that shift starts to happen, we\u2019d welcome the conversation about what a Performance Partnership could look like.'
+      ];
+    } else if (level === 1) {
+      title = 'Stabilize the foundation first';
+      paragraphs = [
+        'Your answers suggest infrastructure, cybersecurity, or compliance concerns are still taking up real executive oxygen. That\u2019s the right place to focus — <strong>Predictable HIT Performance</strong> is built on top of a settled foundation, not around it.',
+        'iMethods Managed Services and Advisory engagements are structured to take that foundation work off your plate. Once it\u2019s background instead of foreground, the conversation about performance gets a lot easier.'
+      ];
+    } else if (level === 2) {
+      title = 'Break the Technology Treadmill';
+      paragraphs = [
+        'You\u2019re on what the iMethods Magnetic Messaging Framework calls the <strong>Technology Treadmill</strong>: unpredictable costs, execution gaps, and risk sitting entirely on your team. Running harder inside this model won\u2019t change the pattern.',
+        'The single strongest lever here is moving from hourly vendor coverage to a <strong>Performance Partnership</strong> — where fees are tied to HIT outcomes, not staffing volume. That\u2019s the fastest route from reactive to reliable.'
+      ];
+    } else if (level === 3) {
+      title = 'You\u2019re transforming — now lock in predictability';
+      paragraphs = [
+        'You\u2019ve moved past firefighting. Planning is real, execution is mostly on track, and HIT is seen as more than overhead. You\u2019re in the <strong>Transformation</strong> band — which is exactly where the jump to Predictable HIT Performance becomes worthwhile.',
+        'The last 20–30% of gains rarely come from more internal effort. They come from shared-risk arrangements where a partner is financially aligned with your outcomes, and from locking in knowledge continuity so rotations don\u2019t reset progress.'
+      ];
+    } else {
+      title = 'You\u2019re at Predictable HIT Performance — now stay there';
+      paragraphs = [
+        'Your HIT organization is operating in the Promised Land: reliable delivery, shared accountability, leadership that treats HIT as strategic infrastructure. Very few health systems score here.',
+        'The risk at this level isn\u2019t regression — it\u2019s growth. M&A, new service lines, and Community Connect expansion can pull you back down the pyramid quickly if partnerships aren\u2019t structured to scale with you. That\u2019s the conversation worth having.'
+      ];
+    }
+
+    el.resRecTitle.textContent = title;
+    el.resRecBody.innerHTML = '';
+    paragraphs.forEach(function (p) {
+      var para = document.createElement('p');
+      para.className = 'recommendation__text';
+      para.innerHTML = p;
+      el.resRecBody.appendChild(para);
+    });
+  }
+
+  // ---------- Restart ----------
+  el.restartBtn.addEventListener('click', function () {
+    state.index = 0;
+    state.answers = new Array(TOTAL).fill(null);
+    if (el.emailInput) el.emailInput.value = state.email; // preserve email on retake
+    showStage('landing');
+  });
+
+  // ---------- Keyboard support on the quiz ----------
+  document.addEventListener('keydown', function (evt) {
+    if (el.quiz.hidden) return;
+    if (evt.key === 'ArrowLeft' && !el.btnPrev.disabled) goPrev();
+    if (evt.key === 'ArrowRight' && !el.btnNext.disabled) goNext();
+    // Number keys 1-4 select answer
+    if (/^[1-4]$/.test(evt.key)) {
+      var i = parseInt(evt.key, 10) - 1;
+      var buttons = el.qOptions.querySelectorAll('.option-btn');
+      if (buttons[i]) buttons[i].click();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
